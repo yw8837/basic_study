@@ -44,17 +44,18 @@ def strip_frontmatter(text: str) -> str:
     return text
 
 
+_EMOJI_RE = re.compile(
+    "[\U00010000-\U0010ffff\U0001F300-\U0001F9FF\U00002600-\U000027BF]",
+    flags=re.UNICODE,
+)
+
+
 def clean_text(text: str) -> str:
     text = re.sub(r"!\[.*?\]\(.*?\)", "", text)
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"^>.*$", "", text, flags=re.MULTILINE)
     text = re.sub(r"[^\S\n]+", " ", text)
-    emoji_pattern = re.compile(
-        "[\U00010000-\U0010ffff\U0001F300-\U0001F9FF\U00002600-\U000027BF]",
-        flags=re.UNICODE,
-    )
-    text = emoji_pattern.sub("", text)
-    return text.strip()
+    return _EMOJI_RE.sub("", text).strip()
 
 
 def extract_sections(text: str) -> list[dict]:
@@ -97,7 +98,7 @@ def extract_concepts(body: str) -> list[str]:
     concepts = []
     for s in sentences:
         s = s.strip()
-        if 10 < len(s) < 200 and "`" in s or re.search(r"\*\*.+\*\*", s):
+        if 10 < len(s) < 200 and ("`" in s or re.search(r"\*\*.+\*\*", s)):
             concepts.append(s)
     return concepts[:5]
 

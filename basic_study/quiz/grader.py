@@ -60,12 +60,10 @@ def grade(question: dict, user_answer: str) -> bool:
 
 
 def grade_with_feedback(question: dict, user_answer: str) -> dict:
-    correct = question["answer"]
     is_correct = grade(question, user_answer)
     return {
         "correct": is_correct,
         "user_answer": user_answer,
-        "correct_answer": correct,
+        "correct_answer": question["answer"],
         "explanation": question.get("explanation", ""),
-        "needs_self_check": False,
     }
