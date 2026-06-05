@@ -183,7 +183,9 @@ def main():
         user_answer, submitted = render_question(
             q, idx, instant_feedback, st.session_state.get("input_key", 0)
         )
-        if submitted and user_answer is not None:
+        if submitted and user_answer is None:
+            st.warning("보기를 선택해주세요.")
+        elif submitted:
             feedback = grade_with_feedback(q, user_answer)
             st.session_state.feedback = feedback
             st.rerun()

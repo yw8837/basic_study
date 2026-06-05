@@ -21,7 +21,11 @@ class BaseStorage(ABC):
 class LocalJSONStorage(BaseStorage):
     def __init__(self):
         base = Path.home() / ".basic_study"
-        base.mkdir(exist_ok=True)
+        try:
+            base.mkdir(exist_ok=True)
+        except OSError:
+            base = Path("/tmp/.basic_study")
+            base.mkdir(exist_ok=True)
         self._progress_path = base / "progress.json"
         self._wrong_path = base / "wrong_notes.json"
 
@@ -32,8 +36,11 @@ class LocalJSONStorage(BaseStorage):
             return json.load(f)
 
     def _write(self, path: Path, data: list) -> None:
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+        try:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        except OSError:
+            pass
 
     def save_session(self, result: dict) -> None:
         history = self._read(self._progress_path)
