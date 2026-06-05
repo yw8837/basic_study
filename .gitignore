@@ -4,3 +4,6 @@ __pycache__/
 .streamlit/secrets.toml
 .DS_Store
 *.local
+.env
+~/.basic_study/
+.omc/

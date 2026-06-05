@@ -8,19 +8,41 @@
 
 ## 단계
 1. ✅ 환경 세팅 (venv + requirements)
-2. ⬜ 파싱 → `data/questions.json`
-3. ⬜ 퀴즈 로직 + Streamlit UI + CLI
-4. ⬜ GitHub → Streamlit Cloud 배포
+2. ✅ 파싱 → `data/questions.json` (1,627개 문제)
+3. ✅ 퀴즈 로직 + Streamlit UI + CLI
+4. ✅ GitHub → Streamlit Cloud 배포 준비
 5. ⬜ (2차) Supabase/Firebase 연결 + 오답노트 + 멀티유저
 
-## 로컬 실행 (개발용)
+## 로컬 실행
+
 ```powershell
 # 가상환경 활성화
 .\venv\Scripts\Activate.ps1
-# 퀴즈 데이터 생성 (2단계 구현 후)
-python -m basic_study.parser
-# 웹앱 실행 (3단계 구현 후)
+
+# 문제은행 재생성 (새 수업 추가 후 실행)
+python parse_questions.py
+
+# 웹앱 실행
 streamlit run app.py
+
+# CLI 퀴즈
+python cli.py
+```
+
+## Streamlit Cloud 배포 방법
+1. GitHub에 push: `git push origin main`
+2. [share.streamlit.io](https://share.streamlit.io) 접속 → "New app"
+3. repo `yw8837/basic_study`, branch `main`, main file `app.py` 선택
+4. Deploy 클릭 → 자동 배포 완료
+5. 이후 `git push` 할 때마다 자동 갱신
+
+## 새 수업 추가 방법
+```powershell
+# 1. yearstudy_6/content/posts 에 새 강의 md 추가 후
+python parse_questions.py       # 문제은행 재생성
+git add data/questions.json
+git commit -m "수업 추가: {날짜 주제}"
+git push origin main            # Streamlit Cloud 자동 갱신
 ```
 
 ## 구조
