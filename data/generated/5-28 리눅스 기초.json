@@ -1,0 +1,262 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "리눅스 경로 표현에서 `~`(물결표)가 의미하는 것은?",
+    "answer": "내 홈 폴더 (예: /home/최용우)",
+    "options": [
+      "내 홈 폴더 (예: /home/최용우)",
+      "컴퓨터의 최상위 폴더(뿌리)",
+      "현재 내가 있는 폴더",
+      "현재 폴더의 상위 폴더"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "시작 전에 — 경로(Path)",
+    "explanation": "리눅스 경로 기호: `/`=최상위(뿌리), `~`=내 홈 폴더, `.`=현재 폴더, `..`=상위 폴더."
+  },
+  {
+    "type": "concept_mc",
+    "question": "절대 경로와 상대 경로에 대한 설명으로 옳은 것은?",
+    "answer": "절대 경로는 루트(/)부터 전체 주소를 쓰고, 상대 경로는 현재 위치 기준으로 쓴다.",
+    "options": [
+      "절대 경로는 루트(/)부터 전체 주소를 쓰고, 상대 경로는 현재 위치 기준으로 쓴다.",
+      "상대 경로는 루트(/)부터 전체 주소를 쓰고, 절대 경로는 현재 위치 기준으로 쓴다.",
+      "절대 경로와 상대 경로 모두 현재 위치 기준으로 쓴다.",
+      "절대 경로는 `~`로 시작하고, 상대 경로는 `/`로 시작한다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "시작 전에 — 경로(Path)",
+    "explanation": "절대 경로: `/home/최용우/Desktop/TEST`처럼 루트(`/`)부터 전체 주소. 상대 경로: `../Desktop`처럼 현재 위치 기준으로 작성합니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "현재 내가 위치한 폴더의 절대 경로를 출력하는 리눅스 명령어는?",
+    "answer": "pwd",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "1. 지금 여기는 어디? — pwd",
+    "explanation": "`pwd`(Print Working Directory)는 현재 위치의 절대 경로를 출력합니다. 탐색기 상단 경로를 확인하는 것과 같은 역할입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "다음 중 상위 폴더로 이동하는 올바른 명령은?",
+    "answer": "cd ..",
+    "options": [
+      "cd ..",
+      "cd ~",
+      "cd /",
+      "cd -"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "1. 지금 여기는 어디? — cd",
+    "explanation": "`cd ..`은 현재 폴더의 바로 위(상위) 폴더로 이동합니다. `cd ~`는 홈 폴더, `cd /`는 최상위 폴더로 이동합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`ls -al` 명령어에서 `-a`와 `-l` 옵션의 의미로 올바른 것은?",
+    "answer": "-a는 숨김 파일 포함(all), -l은 상세 정보(long) 표시이다.",
+    "options": [
+      "-a는 숨김 파일 포함(all), -l은 상세 정보(long) 표시이다.",
+      "-a는 알파벳순 정렬, -l은 목록(list) 보기이다.",
+      "-a는 전체 경로 표시, -l은 크기순 정렬이다.",
+      "-a는 상세 정보(all details), -l은 최근 수정 순 정렬이다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "1. 지금 여기는 어디? — ls",
+    "explanation": "`ls -al`에서 `-a`는 숨김 파일 포함(all), `-l`은 날짜·용량 등 상세 정보(long) 표시입니다. 붙여서 `-al`로 씁니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`mkdir -p linux_practice/src/utils` 명령의 역할로 옳은 것은?",
+    "answer": "linux_practice/src/utils 경로의 중첩 폴더를 한 번에 모두 생성한다.",
+    "options": [
+      "linux_practice/src/utils 경로의 중첩 폴더를 한 번에 모두 생성한다.",
+      "linux_practice 폴더 하나만 생성한다.",
+      "utils 폴더 하나만 생성한다.",
+      "폴더를 삭제하고 새로 만든다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "2. 폴더(디렉터리) 만들기 — mkdir",
+    "explanation": "`mkdir -p`는 여러 단계의 중첩 폴더를 한 번에 만드는 옵션입니다. `linux_practice/src/utils` 구조 전체가 한 줄로 생성됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`echo \"내용\" > 파일명`과 `echo \"내용\" >> 파일명`의 차이로 옳은 것은?",
+    "answer": "`>`는 기존 내용을 덮어쓰고, `>>`는 기존 내용 아래에 이어 붙인다.",
+    "options": [
+      "`>`는 기존 내용을 덮어쓰고, `>>`는 기존 내용 아래에 이어 붙인다.",
+      "`>>`는 기존 내용을 덮어쓰고, `>`는 기존 내용 아래에 이어 붙인다.",
+      "`>`와 `>>` 모두 기존 내용을 유지하고 이어 붙인다.",
+      "`>`는 파일을 생성만 하고, `>>`는 내용을 씁니다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "3. 파일 만들기 및 내용 확인 — echo",
+    "explanation": "`>`는 기존 내용을 싹 지우고 덮어씁니다(위험). `>>`는 기존 내용 아래에 안전하게 이어 붙입니다. 실수로 중요한 데이터를 날릴 수 있으니 `>>`를 권장합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "vi 편집기에서 글을 입력하는 삽입 모드로 진입하는 키는?",
+    "answer": "i",
+    "options": [
+      "i",
+      "ESC",
+      ":w",
+      "a"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "3. 파일 만들기 및 내용 확인 — vi 편집기",
+    "explanation": "vi에서 `i`를 누르면 삽입 모드가 되어 글을 쓸 수 있습니다. `ESC`를 누르면 일반 모드로 돌아갑니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "vi 편집기에서 저장하고 종료하는 단축키는?",
+    "answer": ":wq",
+    "options": [
+      ":wq",
+      ":q",
+      ":w",
+      ":q!"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "3. 파일 만들기 및 내용 확인 — vi 편집기",
+    "explanation": "vi 명령: `:w`=저장, `:q`=종료, `:wq`=저장 후 종료(가장 많이 씀), `:q!`=저장 없이 강제 종료."
+  },
+  {
+    "type": "concept_mc",
+    "question": "폴더 전체를 복사할 때 `cp` 명령에 반드시 붙여야 하는 옵션은?",
+    "answer": "-r",
+    "options": [
+      "-r",
+      "-f",
+      "-a",
+      "-p"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "4. 파일·폴더 복사, 이동, 삭제 — cp",
+    "explanation": "파일 복사는 `cp 원본 사본`, 폴더 전체 복사는 `-r` 옵션이 필수입니다. `rm`으로 폴더를 삭제할 때도 `-r`이 필요합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "리눅스에서 `rm` 명령으로 파일을 삭제하면 어떻게 되나?",
+    "answer": "휴지통 없이 즉시 영구 삭제된다.",
+    "options": [
+      "휴지통 없이 즉시 영구 삭제된다.",
+      "휴지통으로 이동하여 복구가 가능하다.",
+      "30일 후 자동으로 영구 삭제된다.",
+      "삭제 전 확인 메시지가 반드시 표시된다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "4. 파일·폴더 복사, 이동, 삭제 — rm",
+    "explanation": "리눅스에서 `rm`으로 삭제한 파일은 휴지통 없이 즉시 영구 삭제됩니다. 복구가 불가능하므로 항상 신중하게 사용해야 합니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "`sudo` 명령어는 어떤 영어 단어들의 약자인가? (예: Super User DO)",
+    "answer": "Super User DO",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "6. sudo — 관리자 권한으로 실행하기",
+    "explanation": "자료에 따르면 `sudo`는 Super User DO의 약자로, 관리자(root) 권한으로 명령을 실행합니다. Permission denied 오류가 날 때 사용합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`ls -al` 출력에서 맨 앞 문자가 `-`이면 무엇을 의미하는가?",
+    "answer": "파일",
+    "options": [
+      "파일",
+      "폴더(디렉터리)",
+      "링크(심볼릭 링크)",
+      "숨김 파일"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "7. 파일 권한(Permission) 읽기",
+    "explanation": "권한 문자열 맨 앞: `d`=폴더(디렉터리), `-`=파일. 그 다음 3자리씩 소유자/그룹/다른 사용자 권한을 나타냅니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파일 권한 표기 `r`, `w`, `x`가 각각 의미하는 것은?",
+    "answer": "r=읽기, w=쓰기, x=실행",
+    "options": [
+      "r=읽기, w=쓰기, x=실행",
+      "r=실행, w=읽기, x=쓰기",
+      "r=쓰기, w=읽기, x=실행",
+      "r=읽기, w=실행, x=쓰기"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "7. 파일 권한(Permission) 읽기",
+    "explanation": "리눅스 권한 문자: `r`=read(읽기), `w`=write(쓰기), `x`=execute(실행), `-`=해당 권한 없음."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`grep -i \"linux\" hello.txt` 명령에서 `-i` 옵션의 역할은?",
+    "answer": "대소문자 구분 없이 검색한다.",
+    "options": [
+      "대소문자 구분 없이 검색한다.",
+      "현재 폴더의 모든 파일을 재귀 검색한다.",
+      "일치하는 줄 번호를 함께 출력한다.",
+      "검색 결과를 역순으로 출력한다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "8. 파일에서 원하는 내용 찾기 — grep",
+    "explanation": "`grep -i`는 대소문자 구분 없이(case-insensitive) 검색합니다. `-r`은 현재 폴더 전체를 재귀 검색합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "리눅스 파이프(`|`)의 역할로 옳은 것은?",
+    "answer": "앞 명령어의 출력 결과를 뒤 명령어의 입력으로 넘긴다.",
+    "options": [
+      "앞 명령어의 출력 결과를 뒤 명령어의 입력으로 넘긴다.",
+      "두 명령어를 동시에 병렬로 실행한다.",
+      "앞 명령어가 실패하면 뒤 명령어를 실행한다.",
+      "앞 명령어의 결과를 파일로 저장한다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "9. 명령어 연결하기 — 파이프(|)",
+    "explanation": "파이프(`|`)는 앞 명령어의 출력을 뒤 명령어의 입력으로 연결합니다. 예: `ls | grep \"txt\"`는 ls 결과에서 txt가 포함된 항목만 필터링합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "서버 로그를 실시간으로 계속 모니터링할 때 사용하는 명령은?",
+    "answer": "tail -f 로그파일.log",
+    "options": [
+      "tail -f 로그파일.log",
+      "head -f 로그파일.log",
+      "cat -f 로그파일.log",
+      "grep -f 로그파일.log"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "10. 긴 파일 앞/뒤만 보기 — head / tail",
+    "explanation": "`tail -f`는 파일에 새로 추가되는 내용을 실시간으로 계속 보여줍니다. 서버 로그 모니터링에서 개발자들이 가장 많이 쓰는 명령 중 하나입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "터미널에서 Tab 키를 누르면 일어나는 일은?",
+    "answer": "파일·폴더 이름을 자동 완성해 준다.",
+    "options": [
+      "파일·폴더 이름을 자동 완성해 준다.",
+      "이전에 입력한 명령어를 불러온다.",
+      "화면을 깨끗하게 지운다.",
+      "현재 명령어를 취소한다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 리눅스 기초.md",
+    "section": "11. 왕초보를 위한 터미널 꿀팁",
+    "explanation": "Tab 키는 파일·폴더 이름을 자동 완성해 줍니다. 이전 명령어 불러오기는 방향키 ↑, 화면 청소는 Ctrl+L(또는 clear 명령)입니다."
+  }
+]

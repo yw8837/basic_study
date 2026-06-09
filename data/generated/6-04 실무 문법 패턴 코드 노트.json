@@ -1,0 +1,287 @@
+[
+  {
+    "type": "fill_blank",
+    "question": "f-string에서 소수점 둘째 자리까지 출력하려면 아래와 같이 씁니다. 빈칸을 채우세요.\n```python\npi = 3.141592\nprint(f\"π = {pi_____}\")\n# 출력: π = 3.14\n```",
+    "answer": ":.2f",
+    "options": [
+      ":.2f",
+      ":.2d",
+      ":2.f",
+      ":.2%"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "1. f-string 포매팅",
+    "explanation": "f-string에서 소수점 자리 지정은 `:.2f` 형식입니다. `f`는 float, `.2`는 소수점 둘째 자리를 의미합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nbig = 1234567890\nprint(f\"큰 숫자: {big:,}\")\n```",
+    "answer": "큰 숫자: 1,234,567,890",
+    "options": [
+      "큰 숫자: 1,234,567,890",
+      "큰 숫자: 1234567890",
+      "큰 숫자: 1.234567890",
+      "큰 숫자: 123,456,789,0"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "1. f-string 포매팅",
+    "explanation": "f-string에서 `{값:,}`은 숫자에 천 단위 쉼표를 추가합니다. 1234567890 → 1,234,567,890."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nrate = 0.12345\nprint(f\"달성률: {rate:.1%}\")\n```",
+    "answer": "달성률: 12.3%",
+    "options": [
+      "달성률: 12.3%",
+      "달성률: 0.1%",
+      "달성률: 12.345%",
+      "달성률: 12%"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "1. f-string 포매팅",
+    "explanation": "`:.1%`는 값을 100배 해서 퍼센트로, 소수점 한 자리까지 표시합니다. 0.12345 × 100 = 12.345 → 소수점 한 자리 → 12.3%."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nscore = 85\nprint(f\"점수: {score}점 -> {'합격' if score >= 60 else '불합격'}\")\n```",
+    "answer": "점수: 85점 -> 합격",
+    "options": [
+      "점수: 85점 -> 합격",
+      "점수: 85점 -> 불합격",
+      "점수: score점 -> 합격",
+      "SyntaxError 발생"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "1. f-string 포매팅",
+    "explanation": "f-string 중괄호 안에 조건식(삼항 표현식)을 쓸 수 있습니다. score가 85로 60 이상이므로 '합격'이 출력됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nsquares = [i ** 2 for i in range(1, 6)]\nprint(squares)\n```",
+    "answer": "[1, 4, 9, 16, 25]",
+    "options": [
+      "[1, 4, 9, 16, 25]",
+      "[1, 2, 3, 4, 5]",
+      "[2, 4, 6, 8, 10]",
+      "[1, 4, 9, 16, 25, 36]"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "2. 리스트 컴프리헨션",
+    "explanation": "`range(1, 6)`은 1~5이고, 각 값의 제곱이 [1, 4, 9, 16, 25]입니다. `range(1, 11)`이라면 [1,4,9,...,100]이지만 여기선 range(1,6)이므로 5개입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nmembers = [\n    {'name': 'Alice', 'team': '개발팀', 'salary': 6500},\n    {'name': 'Bob',   'team': '기획팀', 'salary': 5200},\n    {'name': 'Derek', 'team': '개발팀', 'salary': 4800},\n    {'name': 'Eve',   'team': '분석팀', 'salary': 3600},\n]\nhigh = [m['name'] for m in members if m['salary'] >= 5000]\nprint(high)\n```",
+    "answer": "['Alice', 'Bob']",
+    "options": [
+      "['Alice', 'Bob']",
+      "['Alice', 'Bob', 'Derek']",
+      "['Alice']",
+      "['Bob', 'Derek']"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "2. 리스트 컴프리헨션",
+    "explanation": "salary가 5000 이상인 멤버는 Alice(6500)와 Bob(5200)입니다. Derek(4800)과 Eve(3600)은 조건을 통과하지 못합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "리스트 컴프리헨션에서 필터 `if`와 변환 `if-else`의 위치로 올바른 것은?",
+    "answer": "필터 if는 for 뒤, if-else 변환은 식 앞",
+    "options": [
+      "필터 if는 for 뒤, if-else 변환은 식 앞",
+      "필터 if는 식 앞, if-else 변환은 for 뒤",
+      "둘 다 for 뒤에 온다",
+      "둘 다 식 앞에 온다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "2. 리스트 컴프리헨션",
+    "explanation": "필터는 `[식 for x in seq if 조건]`처럼 for 뒤에 씁니다. if-else 변환은 `[A if 조건 else B for x in seq]`처럼 식 앞에 씁니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nraw = [' Python ', 'Django ', ' React', 'SQL', ' ', '']\nclean = [s.strip() for s in raw if s.strip()]\nprint(clean)\n```",
+    "answer": "['Python', 'Django', 'React', 'SQL']",
+    "options": [
+      "['Python', 'Django', 'React', 'SQL']",
+      "[' Python ', 'Django ', ' React', 'SQL']",
+      "['Python', 'Django', 'React', 'SQL', '', '']",
+      "['Python', 'Django', 'React', 'SQL', ' ']"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "2. 리스트 컴프리헨션",
+    "explanation": "`s.strip()`으로 앞뒤 공백을 제거하고, `if s.strip()`으로 빈 문자열(' ', '')을 필터링합니다. 결과는 공백 없이 정리된 4개 항목입니다."
+  },
+  {
+    "type": "result_to_code",
+    "question": "members 리스트에서 이름을 키, 연봉을 값으로 하는 딕셔너리를 만드는 딕셔너리 컴프리헨션으로 올바른 것은?\n```python\nmembers = [\n    {'name': 'Alice', 'salary': 6500},\n    {'name': 'Bob',   'salary': 5200},\n]\n```",
+    "answer": "{m['name']: m['salary'] for m in members}",
+    "options": [
+      "{m['name']: m['salary'] for m in members}",
+      "[m['name']: m['salary'] for m in members]",
+      "{m['salary']: m['name'] for m in members}",
+      "dict(m['name'], m['salary'] for m in members)"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "2. 리스트 컴프리헨션",
+    "explanation": "딕셔너리 컴프리헨션은 `{키: 값 for ... }`입니다. 중괄호를 쓰고 `키: 값` 형태가 앞에 옵니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`sorted()`와 `.sort()`의 차이로 올바른 것은?",
+    "answer": "`sorted()`는 원본을 유지하고 새 리스트를 반환, `.sort()`는 원본을 직접 변경하고 None을 반환",
+    "options": [
+      "`sorted()`는 원본을 유지하고 새 리스트를 반환, `.sort()`는 원본을 직접 변경하고 None을 반환",
+      "`.sort()`는 원본을 유지하고, `sorted()`는 원본을 변경한다",
+      "둘 다 원본을 변경한다",
+      "둘 다 새 리스트를 반환한다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "3. sorted — 정렬",
+    "explanation": "`sorted(scores)`는 원본 `scores`를 유지하고 정렬된 새 리스트를 반환합니다. `scores.sort()`는 원본 자체를 변경하고 반환값은 None입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nwords = ['Python', 'AI', 'MachineLearning', 'SQL']\nprint(sorted(words, key=len))\n```",
+    "answer": "['AI', 'SQL', 'Python', 'MachineLearning']",
+    "options": [
+      "['AI', 'SQL', 'Python', 'MachineLearning']",
+      "['MachineLearning', 'Python', 'SQL', 'AI']",
+      "['AI', 'Python', 'SQL', 'MachineLearning']",
+      "['AI', 'SQL', 'MachineLearning', 'Python']"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "3. sorted — 정렬",
+    "explanation": "`key=len`은 글자 수 기준 정렬입니다. AI(2), SQL(3), Python(6), MachineLearning(15) 순으로 오름차순 정렬됩니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "딕셔너리 리스트를 연봉 내림차순으로 정렬하려 합니다. 빈칸을 채우세요.\n```python\nmembers = [\n    {'name': 'Alice', 'salary': 6500},\n    {'name': 'Eve',   'salary': 3600},\n]\nby_salary = sorted(members, key=lambda m: m['salary'], _____=True)\n```",
+    "answer": "reverse",
+    "options": [
+      "reverse",
+      "descending",
+      "order",
+      "down"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "3. sorted — 정렬",
+    "explanation": "`sorted()`에서 내림차순 정렬은 `reverse=True`를 씁니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nfor idx, team in enumerate(['개발팀', '기획팀'], start=1):\n    print(f\"{idx}번 팀: {team}\")\n```",
+    "answer": "1번 팀: 개발팀\n2번 팀: 기획팀",
+    "options": [
+      "1번 팀: 개발팀\n2번 팀: 기획팀",
+      "0번 팀: 개발팀\n1번 팀: 기획팀",
+      "1번 팀: 개발팀\n1번 팀: 기획팀",
+      "개발팀: 1번\n기획팀: 2번"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "4. enumerate — 인덱스 + 값",
+    "explanation": "`enumerate(..., start=1)`은 인덱스를 1부터 시작합니다. 기본값은 0이지만 `start=1`로 지정하면 1부터 번호를 매깁니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`lambda x: x ** 2` 에 대한 설명으로 올바른 것은?",
+    "answer": "매개변수 x를 받아 x의 제곱을 반환하는 이름 없는 함수",
+    "options": [
+      "매개변수 x를 받아 x의 제곱을 반환하는 이름 없는 함수",
+      "x를 문자열로 변환하는 함수",
+      "x가 2인지 확인하는 함수",
+      "x번 반복하는 루프"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "5. lambda · map · filter",
+    "explanation": "`lambda 매개변수: 표현식`은 이름 없는 한 줄 함수입니다. `lambda x: x ** 2`는 x를 받아 x²을 반환합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nnums = [1, 2, 3, 4, 5]\nprint(list(map(lambda x: x * 2, nums)))\n```",
+    "answer": "[2, 4, 6, 8, 10]",
+    "options": [
+      "[2, 4, 6, 8, 10]",
+      "[1, 4, 9, 16, 25]",
+      "[3, 5, 7, 9, 11]",
+      "[2, 4, 6, 8, 10, 12]"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "5. lambda · map · filter",
+    "explanation": "`map(lambda x: x*2, nums)`는 각 원소에 2를 곱합니다. 1→2, 2→4, 3→6, 4→8, 5→10. `list()`로 감싸야 결과가 보입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nnums = [1, 2, 3, 4, 5]\nprint(list(filter(lambda x: x % 2 == 0, nums)))\n```",
+    "answer": "[2, 4]",
+    "options": [
+      "[2, 4]",
+      "[1, 3, 5]",
+      "[2, 4, 6]",
+      "[1, 2, 3, 4, 5]"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "5. lambda · map · filter",
+    "explanation": "`filter(lambda x: x%2==0, nums)`는 조건이 True인 요소만 남깁니다. 1~5 중 짝수는 2, 4입니다."
+  },
+  {
+    "type": "result_to_code",
+    "question": "연봉 리스트(원 단위)를 만원 단위로 변환하는 코드로 올바른 것은?\n```python\nsalaries = [65000000, 52000000, 48000000]\n# 기대 결과: [6500, 5200, 4800]\n```",
+    "answer": "list(map(lambda w: w // 10000, salaries))",
+    "options": [
+      "list(map(lambda w: w // 10000, salaries))",
+      "list(filter(lambda w: w // 10000, salaries))",
+      "list(map(lambda w: w * 10000, salaries))",
+      "sorted(salaries, key=lambda w: w // 10000)"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "5. lambda · map · filter",
+    "explanation": "`map`은 각 요소를 변환합니다. 원 단위 → 만원 단위는 `// 10000`(정수 나눗셈). 65000000 // 10000 = 6500."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`if __name__ == \"__main__\":` 블록 안의 코드는 언제 실행되나요?",
+    "answer": "해당 파일을 직접 실행할 때만",
+    "options": [
+      "해당 파일을 직접 실행할 때만",
+      "다른 파일에서 import할 때만",
+      "항상 실행된다",
+      "함수 안에서 호출될 때만"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "6. if __name__ == '__main__':",
+    "explanation": "`if __name__ == \"__main__\":` 블록은 해당 파일을 직접 실행할 때만 동작합니다. 다른 파일이 이 파일을 import하면 이 블록은 실행되지 않습니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "다음 코드에서 이 파일을 `import`할 때 `greet('Alice')`가 실행되지 않도록 하는 빈칸을 채우세요.\n```python\ndef greet(name):\n    return f'안녕하세요, {name}님!'\n\nif _____ == '__main__':\n    print(greet('Alice'))\n```",
+    "answer": "__name__",
+    "options": [
+      "__name__",
+      "__file__",
+      "__main__",
+      "__module__"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 실무 문법 패턴 코드 노트.md",
+    "section": "6. if __name__ == '__main__':",
+    "explanation": "`__name__`은 파이썬이 자동으로 설정하는 변수입니다. 직접 실행 시 `'__main__'`이 되고, import 시에는 모듈 이름이 됩니다."
+  }
+]

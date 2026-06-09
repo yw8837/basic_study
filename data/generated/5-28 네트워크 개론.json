@@ -1,0 +1,267 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "네트워크 토폴로지 중 중앙 허브에 모든 노드가 연결되어 있어, 장애 시 해당 노드만 영향을 받는 구조는?",
+    "answer": "Star",
+    "options": [
+      "Star",
+      "Bus",
+      "Ring",
+      "Mesh"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "01 · 네트워크 개요",
+    "explanation": "Star 토폴로지는 중앙 허브에 모든 노드가 연결된 중앙 집중 구조로, 한 노드에 장애가 생겨도 해당 노드만 영향을 받습니다. Bus는 케이블 단선 시 전체 장애, Ring은 한 노드 장애 시 전체 영향이 생깁니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "네트워크 유형 중 건물·캠퍼스 내 범위에서 사용하는 네트워크는?",
+    "answer": "LAN (Local Area Network)",
+    "options": [
+      "LAN (Local Area Network)",
+      "WAN (Wide Area Network)",
+      "MAN (Metropolitan Area Network)",
+      "PAN (Personal Area Network)"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "01 · 네트워크 개요",
+    "explanation": "LAN(Local Area Network)은 건물·캠퍼스 내 범위에서 사용합니다. PAN은 개인 기기 간(~10m), MAN은 도시 규모, WAN은 국가·대륙 이상의 범위입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "IPv4와 IPv6에 대한 설명으로 올바른 것은?",
+    "answer": "IPv4는 32비트로 약 42억 개 주소를 제공하고, IPv6는 128비트로 사실상 무제한의 주소를 제공한다",
+    "options": [
+      "IPv4는 32비트로 약 42억 개 주소를 제공하고, IPv6는 128비트로 사실상 무제한의 주소를 제공한다",
+      "IPv6는 32비트로 약 42억 개 주소를 제공하고, IPv4는 128비트로 사실상 무제한의 주소를 제공한다",
+      "IPv4와 IPv6 모두 32비트 주소 체계를 사용한다",
+      "IPv4 주소 예시는 2001:0db8::1 이다"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "01 · 네트워크 개요",
+    "explanation": "IPv4는 32비트로 4옥텟(예: 192.168.0.1)이며 약 42억 개 주소를 제공합니다. IPv6는 128비트 16진수 8그룹(예: 2001:0db8::1)으로 사실상 무제한 주소를 제공합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "OSI 7계층 중 TCP와 UDP가 속하는 계층은?",
+    "answer": "4계층 — 전송 계층 (Transport)",
+    "options": [
+      "4계층 — 전송 계층 (Transport)",
+      "3계층 — 네트워크 계층 (Network)",
+      "7계층 — 응용 계층 (Application)",
+      "2계층 — 데이터링크 계층 (Data Link)"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "01 · 네트워크 개요",
+    "explanation": "TCP와 UDP는 OSI 7계층 중 4계층인 전송 계층(Transport)에 속합니다. IP는 3계층(Network), HTTP·FTP·DNS는 7계층(Application)에 속합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "HTTP의 특성 중 '서버는 이전 요청을 기억하지 않는다'는 특성을 무엇이라 하는가?",
+    "answer": "무상태(Stateless)",
+    "options": [
+      "무상태(Stateless)",
+      "비동기(Asynchronous)",
+      "단방향(Unidirectional)",
+      "비연결형(Connectionless)"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "02 · 인터넷과 HTTP",
+    "explanation": "HTTP는 무상태(Stateless) 특성을 가집니다. 서버는 이전 요청을 기억하지 않으며, 이 특성을 보완하기 위해 쿠키·세션·토큰이 등장했습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "HTTP 상태 코드 404가 의미하는 것은?",
+    "answer": "클라이언트 오류 — Not Found (요청한 리소스를 찾을 수 없음)",
+    "options": [
+      "클라이언트 오류 — Not Found (요청한 리소스를 찾을 수 없음)",
+      "서버 내부 오류",
+      "요청 성공",
+      "리다이렉션 (다른 URL로 이동)"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "02 · 인터넷과 HTTP",
+    "explanation": "404 Not Found는 4xx(클라이언트 오류)에 해당합니다. 2xx는 성공, 3xx는 리다이렉션, 5xx는 서버 오류입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "캡슐화(Encapsulation) 과정에서 데이터가 전송될 때 변환 순서로 올바른 것은?",
+    "answer": "데이터 → 세그먼트 → 패킷 → 프레임 → 비트열",
+    "options": [
+      "데이터 → 세그먼트 → 패킷 → 프레임 → 비트열",
+      "비트열 → 프레임 → 패킷 → 세그먼트 → 데이터",
+      "데이터 → 패킷 → 세그먼트 → 프레임 → 비트열",
+      "데이터 → 프레임 → 패킷 → 세그먼트 → 비트열"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "02 · 인터넷과 HTTP",
+    "explanation": "보내는 쪽(캡슐화): 데이터 → 세그먼트 → 패킷 → 프레임 → 비트열 (각 계층에서 헤더 추가). 받는 쪽(역캡슐화)은 반대 순서입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "DNS(Domain Name System)의 질의 방식 중 DNS 서버가 대신 다른 서버에 질의하고 최종 결과를 반환하는 방식은?",
+    "answer": "재귀적 질의",
+    "options": [
+      "재귀적 질의",
+      "반복적 질의",
+      "브로드캐스트 질의",
+      "유니캐스트 질의"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "03 · 주요 프로토콜",
+    "explanation": "재귀적 질의는 DNS 서버가 대신 다른 서버에 질의하고 최종 결과를 반환하는 방식이고, 반복적 질의는 클라이언트가 직접 각 DNS 서버에 순차적으로 질의하는 방식입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "TCP의 3-way Handshake 연결 수립 순서로 올바른 것은?",
+    "answer": "SYN → SYN/ACK → ACK",
+    "options": [
+      "SYN → SYN/ACK → ACK",
+      "ACK → SYN → SYN/ACK",
+      "SYN/ACK → SYN → ACK",
+      "FIN → ACK → FIN → ACK"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "03 · 주요 프로토콜",
+    "explanation": "TCP 3-way Handshake: 클라이언트→SYN→서버, 클라이언트←SYN/ACK←서버, 클라이언트→ACK→서버 순서로 연결이 수립됩니다. FIN 시퀀스는 4-way Handshake로 연결 종료 시 사용합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "TCP와 UDP를 비교한 것으로 올바른 것은?",
+    "answer": "TCP는 연결형으로 신뢰성이 높고, UDP는 비연결형으로 속도가 빠르다",
+    "options": [
+      "TCP는 연결형으로 신뢰성이 높고, UDP는 비연결형으로 속도가 빠르다",
+      "UDP는 연결형으로 신뢰성이 높고, TCP는 비연결형으로 속도가 빠르다",
+      "TCP와 UDP 모두 연결형 프로토콜이다",
+      "DNS와 동영상 스트리밍은 TCP를 사용한다"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "03 · 주요 프로토콜",
+    "explanation": "TCP는 연결형·신뢰성 높음(재전송 보장), UDP는 비연결형·빠름(손실 허용). DNS와 동영상 스트리밍은 UDP를 사용하고, HTTP·이메일·파일 전송은 TCP를 사용합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "FTP와 SFTP의 포트 번호가 올바르게 짝지어진 것은?",
+    "answer": "FTP 제어=21, 데이터=20 / SFTP=22",
+    "options": [
+      "FTP 제어=21, 데이터=20 / SFTP=22",
+      "FTP=22 / SFTP 제어=21, 데이터=20",
+      "FTP=80 / SFTP=443",
+      "FTP=20 / SFTP=21"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "03 · 주요 프로토콜",
+    "explanation": "FTP는 제어 포트 21, 데이터 포트 20을 사용합니다. SFTP(SSH File Transfer Protocol)는 SSH 기반 암호화로 포트 22를 사용합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "인증(Authentication)과 인가(Authorization)의 차이로 올바른 것은?",
+    "answer": "인증은 신원 검증('당신이 누구냐?')이고, 인가는 권한 확인('무엇을 할 수 있냐?')이다",
+    "options": [
+      "인증은 신원 검증('당신이 누구냐?')이고, 인가는 권한 확인('무엇을 할 수 있냐?')이다",
+      "인가는 신원 검증('당신이 누구냐?')이고, 인증은 권한 확인('무엇을 할 수 있냐?')이다",
+      "인증은 인가보다 나중에 수행된다",
+      "인증과 인가는 동일한 개념이다"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "04 · 보안",
+    "explanation": "인증(Authentication)은 신원 검증(로그인, 비밀번호)이고, 인가(Authorization)는 권한 확인(관리자 페이지 접근 허용 여부)입니다. 인증이 먼저 수행된 후 인가가 이루어집니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "해시 함수의 특징 중 '입력 1비트가 변경되면 출력의 절반 이상이 바뀐다'는 특성은?",
+    "answer": "눈사태 효과",
+    "options": [
+      "눈사태 효과",
+      "단방향성",
+      "충돌 저항성",
+      "압축 효과"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "04 · 보안",
+    "explanation": "눈사태 효과(Avalanche Effect)는 입력 1비트가 변경되면 출력의 절반 이상이 변경되는 해시 함수의 특성입니다. 단방향성은 역산 불가, 충돌 저항성은 같은 해시값 찾기 불가, 압축 효과는 어떤 입력이든 고정 길이 출력을 의미합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "현재 가장 많이 사용되는 해시 알고리즘으로, SHA-256·SHA-512가 포함된 것은?",
+    "answer": "SHA-2",
+    "options": [
+      "SHA-2",
+      "MD5",
+      "SHA-1",
+      "SHA-3"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "04 · 보안",
+    "explanation": "SHA-2(224~512bit)는 현재 가장 많이 사용되며 SHA-256, SHA-512가 여기 포함됩니다. MD5는 충돌 취약점으로 보안용 비권장, SHA-1도 현재 비권장, SHA-3는 Keccak 기반 최신 표준입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "쿠키와 세션의 저장 위치와 보안을 올바르게 비교한 것은?",
+    "answer": "쿠키는 클라이언트에 저장되어 보안이 낮고, 세션은 서버에 저장되어 보안이 높다",
+    "options": [
+      "쿠키는 클라이언트에 저장되어 보안이 낮고, 세션은 서버에 저장되어 보안이 높다",
+      "세션은 클라이언트에 저장되어 보안이 낮고, 쿠키는 서버에 저장되어 보안이 높다",
+      "쿠키와 세션 모두 서버에 저장된다",
+      "쿠키는 서버 부하를 높이고, 세션은 서버 부하가 없다"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "04 · 보안",
+    "explanation": "쿠키는 클라이언트(브라우저)에 저장되어 보안이 상대적으로 낮지만 서버 부하가 없습니다. 세션은 서버에 저장되어 보안이 높지만 세션 저장 부하가 발생합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "JWT(JSON Web Token)의 구조로 올바른 것은?",
+    "answer": "[Header].[Payload].[Signature]",
+    "options": [
+      "[Header].[Payload].[Signature]",
+      "[Payload].[Header].[Signature]",
+      "[Signature].[Header].[Payload]",
+      "[Header].[Signature].[Payload]"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "04 · 보안",
+    "explanation": "JWT는 [Header].[Payload].[Signature] 구조입니다. Header는 토큰 타입과 서명 알고리즘, Payload는 사용자 정보와 만료 시간, Signature는 Header+Payload를 비밀키로 서명한 값입니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "IP 주소를 자동으로 할당해주는 프로토콜로, 서브넷 마스크·게이트웨이 등도 함께 설정해주는 것은?",
+    "answer": "DHCP",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "03 · 주요 프로토콜",
+    "explanation": "DHCP(Dynamic Host Configuration Protocol)는 IP 주소·서브넷 마스크·게이트웨이 등을 자동으로 할당하는 프로토콜입니다. Discover→Offer→Request→Ack 4단계로 동작합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "통신 방식 중 1:전체 통신으로 네트워크 내 모든 노드에 전송하는 방식은?",
+    "answer": "브로드캐스트",
+    "options": [
+      "브로드캐스트",
+      "유니캐스트",
+      "멀티캐스트",
+      "애니캐스트"
+    ],
+    "grading": "lenient",
+    "source_file": "5-28 네트워크 개론.md",
+    "section": "01 · 네트워크 개요",
+    "explanation": "브로드캐스트는 1:전체 통신으로 네트워크 내 모든 노드에 전송합니다. 유니캐스트는 1:1, 멀티캐스트는 1:N(특정 그룹)입니다."
+  }
+]

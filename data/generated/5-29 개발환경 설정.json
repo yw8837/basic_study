@@ -1,0 +1,192 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "uv에 대한 설명으로 옳은 것은?",
+    "answer": "pip·venv·버전 관리를 하나로 합친 파이썬 패키지·프로젝트 관리 도구다.",
+    "options": [
+      "pip·venv·버전 관리를 하나로 합친 파이썬 패키지·프로젝트 관리 도구다.",
+      "파이썬 코드를 컴파일해 실행 속도를 높여주는 도구다.",
+      "JupyterLab의 또 다른 이름이다.",
+      "pip를 완전히 대체하는 Node.js 기반 패키지 관리자다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "uv가 뭔가요?",
+    "explanation": "uv는 기존에 따로 쓰던 pip(패키지 설치) + venv(가상환경) + 버전 관리를 하나로 합쳐 놓은 파이썬 패키지·프로젝트 관리 도구입니다. Rust로 만들어져 빠른 게 특징입니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "uv가 Rust로 만들어져서 두드러지는 특징은 무엇인가요? (한 단어로)",
+    "answer": "빠르다",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "uv가 뭔가요?",
+    "explanation": "자료에서 'Rust로 만들어져서 설치·동기화가 매우 빠른 게 특징'이라고 명시되어 있습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "가상환경(virtual environment)을 사용하는 이유로 가장 적절한 것은?",
+    "answer": "프로젝트마다 독립된 작업 공간을 만들어 라이브러리 버전 충돌을 방지한다.",
+    "options": [
+      "프로젝트마다 독립된 작업 공간을 만들어 라이브러리 버전 충돌을 방지한다.",
+      "인터넷 연결 없이 패키지를 설치하기 위해서다.",
+      "파이썬 코드 실행 속도를 높이기 위해서다.",
+      "여러 사람이 같은 파일을 동시에 편집하기 위해서다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "uv가 뭔가요?",
+    "explanation": "가상환경은 프로젝트마다 필요한 라이브러리 버전이 다를 때, 프로젝트별로 독립된 작업 공간을 만들어 라이브러리가 서로 충돌하지 않게 해줍니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "Windows에서 uv를 설치하는 올바른 방법은?",
+    "answer": "PowerShell을 관리자 권한으로 실행한 후 설치 명령을 입력한다.",
+    "options": [
+      "PowerShell을 관리자 권한으로 실행한 후 설치 명령을 입력한다.",
+      "일반 PowerShell에서 설치 명령을 입력한다.",
+      "cmd(명령 프롬프트)를 관리자 권한으로 실행해 pip install uv를 입력한다.",
+      "파이썬 공식 홈페이지에서 설치 파일(.exe)을 내려받는다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "1. uv 설치하기",
+    "explanation": "자료에 'PowerShell을 관리자 권한으로 실행'한 뒤 설치 명령을 입력하라고 명시되어 있습니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "uv 설치 후 버전이 정상적으로 설치됐는지 확인하는 명령어의 빈칸을 채우세요.\n\n```bash\nuv ______\n```",
+    "answer": "--version",
+    "options": [
+      "--version",
+      "--check",
+      "version",
+      "info"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "2. 설치 잘 됐는지 확인",
+    "explanation": "`uv --version` 명령을 실행하면 `uv 0.11.16 (...)` 형태의 버전 정보가 출력됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`pyproject.toml`과 `uv.lock` 파일의 역할을 올바르게 짝지은 것은?",
+    "answer": "pyproject.toml — 필요한 패키지 목록 / uv.lock — 패키지들의 정확한 버전 고정",
+    "options": [
+      "pyproject.toml — 필요한 패키지 목록 / uv.lock — 패키지들의 정확한 버전 고정",
+      "pyproject.toml — 패키지들의 정확한 버전 고정 / uv.lock — 필요한 패키지 목록",
+      "pyproject.toml — 가상환경 폴더 생성 위치 / uv.lock — 설치 로그",
+      "pyproject.toml — uv 실행 스크립트 / uv.lock — 환경 변수 설정"
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "3. 프로젝트 설정 파일 준비",
+    "explanation": "자료의 표에 따르면 pyproject.toml은 '이 프로젝트에 필요한 패키지 목록', uv.lock은 '패키지들의 정확한 버전 고정'이라고 명시되어 있습니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "`pyproject.toml`과 `uv.lock` 기준으로 패키지를 설치하는 명령어의 빈칸을 채우세요.\n\n```bash\nuv ______\n```",
+    "answer": "sync",
+    "options": [
+      "sync",
+      "install",
+      "init",
+      "update"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "4. 의존성 설치 — uv sync",
+    "explanation": "`uv sync`를 실행하면 `.venv` 가상환경 폴더가 생기고, pyproject.toml·uv.lock에 명시된 패키지가 설치됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`uv sync` 실행 성공을 확인하는 기준으로 옳은 것은?",
+    "answer": "Installed N packages가 에러 없이 출력된다.",
+    "options": [
+      "Installed N packages가 에러 없이 출력된다.",
+      ".venv 폴더가 삭제된다.",
+      "pyproject.toml 파일이 자동으로 업데이트된다.",
+      "브라우저에서 JupyterLab이 자동으로 열린다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "4. 의존성 설치 — uv sync",
+    "explanation": "자료에 '`Installed N packages`가 에러 없이 나오면 성공'이라고 명시되어 있습니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "uv가 만든 가상환경 안에서 `check_env.py` 스크립트를 실행하는 명령어의 빈칸을 채우세요.\n\n```bash\nuv ______ python check_env.py\n```",
+    "answer": "run",
+    "options": [
+      "run",
+      "exec",
+      "activate",
+      "start"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "5. 환경 확인 — check_env.py 실행",
+    "explanation": "`uv run <명령>`은 'uv가 만든 가상환경 안에서 그 명령을 실행해줘'라는 뜻입니다. 가상환경을 따로 활성화(activate)할 필요가 없어서 편리합니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "JupyterLab을 실행하는 명령어의 빈칸을 채우세요.\n\n```bash\nuv run ______ lab\n```",
+    "answer": "jupyter",
+    "options": [
+      "jupyter",
+      "jupyterlab",
+      "notebook",
+      "ipython"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "6. JupyterLab 실행",
+    "explanation": "JupyterLab 실행 명령은 `uv run jupyter lab`입니다. 실행하면 브라우저에서 JupyterLab이 자동으로 열립니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "Windows에서 `uv run` 실행 시 '애플리케이션 제어 정책에서 이 파일을 차단했습니다' 에러가 발생하는 원인은?",
+    "answer": "Windows 보안 기능이 python 실행을 막아서 생기는 문제다.",
+    "options": [
+      "Windows 보안 기능이 python 실행을 막아서 생기는 문제다.",
+      "uv가 설치되지 않았기 때문이다.",
+      "pyproject.toml 파일이 없기 때문이다.",
+      "PATH 환경변수에 uv 경로가 등록되지 않았기 때문이다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "7. 안 될 때 — Windows 보안 차단 해결",
+    "explanation": "자료에 'Windows 보안 기능이 python 실행을 막아서 생기는 문제'라고 명시되어 있습니다. 해결하려면 Windows 보안 > 앱 및 브라우저 컨트롤에서 해당 설정을 잠시 해제해야 합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "PATH에 uv 설치 폴더를 등록해야 하는 이유로 옳은 것은?",
+    "answer": "어느 폴더에서든 uv 명령을 쓸 수 있게 컴퓨터가 uv 위치를 찾을 수 있어야 하기 때문이다.",
+    "options": [
+      "어느 폴더에서든 uv 명령을 쓸 수 있게 컴퓨터가 uv 위치를 찾을 수 있어야 하기 때문이다.",
+      "uv가 인터넷에 접속하기 위해 필요하기 때문이다.",
+      "가상환경 폴더(.venv)를 자동으로 생성하기 위해 필요하기 때문이다.",
+      "PowerShell에서 관리자 권한을 얻기 위해 필요하기 때문이다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "1. uv 설치하기",
+    "explanation": "자료에서 PATH를 '컴퓨터가 uv 명령어가 어느 폴더에 있는지 찾는 길 목록'으로 설명하며, PATH에 등록해야 어디서든 `uv` 명령을 쓸 수 있다고 명시합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "다음 자주 쓰는 uv 명령 중 설명이 잘못 연결된 것은?",
+    "answer": "uv add <패키지> — pyproject.toml·uv.lock 기준으로 패키지 일괄 설치",
+    "options": [
+      "uv add <패키지> — pyproject.toml·uv.lock 기준으로 패키지 일괄 설치",
+      "uv --version — uv 버전 확인",
+      "uv sync — pyproject.toml·uv.lock 기준으로 패키지 설치",
+      "uv run <명령> — 가상환경 안에서 명령 실행"
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 개발환경 설정.md",
+    "section": "자주 쓰는 uv 명령 정리",
+    "explanation": "자료의 표에서 `uv add <패키지>`는 '새 패키지 추가'이고, 'pyproject.toml·uv.lock 기준으로 패키지 일괄 설치'는 `uv sync`의 설명입니다."
+  }
+]

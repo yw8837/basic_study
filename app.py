@@ -35,8 +35,11 @@ def get_sections(questions):
     return sections
 
 
-def sample_questions(questions, scope, section=None):
-    pool = questions if scope == "전체" else [q for q in questions if q["source_file"].replace(".md", "") == section]
+def sample_questions(questions, selected_sections=None):
+    if not selected_sections:  # 아무것도 안 고르면 전체
+        pool = questions
+    else:
+        pool = [q for q in questions if q["source_file"].replace(".md", "") in selected_sections]
     if not pool:
         return []
     by_type = {}
@@ -137,13 +140,16 @@ def main():
         st.title("📚 Basic Study")
         st.divider()
         scope = st.radio("범위", ["전체", "섹션 선택"])
-        section = None
+        selected = []
         if scope == "섹션 선택":
-            section = st.selectbox("수업/파일 선택", sections)
+            with st.expander("수업/파일 선택 (여러 개 체크 가능)", expanded=True):
+                for s in sections:
+                    if st.checkbox(s, key=f"sec_{s}"):
+                        selected.append(s)
         instant_feedback = st.toggle("즉시 해설", value=True)
         st.divider()
         if st.button("🚀 퀴즈 시작", use_container_width=True):
-            qs = sample_questions(all_questions, scope, section)
+            qs = sample_questions(all_questions, selected)
             if not qs:
                 st.error("선택 범위에 문제가 없습니다.")
             else:
@@ -188,16 +194,16 @@ def main():
         elif submitted:
             feedback = grade_with_feedback(q, user_answer)
             st.session_state.feedback = feedback
+            # 채점은 제출 직후 1회만 반영 (이후 rerun으로 점수 중복 가산되던 버그 방지)
+            if feedback["correct"]:
+                st.session_state.score += 1
+            else:
+                STORAGE.save_wrong(q["id"], q)
             st.rerun()
     else:
         feedback = st.session_state.feedback
         st.markdown(q["question"])
         render_feedback(feedback, instant_feedback)
-
-        if feedback["correct"]:
-            st.session_state.score += 1
-        else:
-            STORAGE.save_wrong(q["id"], q)
 
         if instant_feedback:
             if st.button("다음 →"):

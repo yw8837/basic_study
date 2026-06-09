@@ -1,0 +1,252 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "파이썬에서 클래스(Class)와 인스턴스(Instance)의 관계를 가장 잘 설명한 것은?",
+    "answer": "클래스는 설계도이고, 인스턴스는 그 설계도로 만든 실제 객체이다.",
+    "options": [
+      "클래스는 설계도이고, 인스턴스는 그 설계도로 만든 실제 객체이다.",
+      "클래스와 인스턴스는 같은 것을 가리키는 다른 이름이다.",
+      "인스턴스는 설계도이고, 클래스는 그 설계도로 만든 실제 객체이다.",
+      "클래스는 함수이고, 인스턴스는 그 함수의 반환값이다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "01 · 클래스 = 설계도, 인스턴스 = 실제 물건",
+    "explanation": "클래스는 붕어빵 틀(설계도)이고, 인스턴스는 그 틀로 찍어낸 실제 붕어빵(객체)입니다. 서로 다른 개념이에요."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    pass\n\nmember1 = TeamMember()\nmember2 = TeamMember()\nprint(member1 is member2)\n```",
+    "answer": "False",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "01 · 클래스 = 설계도, 인스턴스 = 실제 물건",
+    "explanation": "`is`는 두 변수가 동일한 객체를 가리키는지 확인합니다. member1과 member2는 같은 클래스로 만들었지만 서로 다른 객체이므로 False입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`__init__` 메서드에 대한 설명으로 옳은 것은?",
+    "answer": "인스턴스가 생성되는 순간 자동으로 실행되는 생성자 메서드이다.",
+    "options": [
+      "인스턴스가 생성되는 순간 자동으로 실행되는 생성자 메서드이다.",
+      "클래스를 정의할 때 한 번만 실행되는 메서드이다.",
+      "인스턴스를 삭제할 때 자동으로 실행되는 메서드이다.",
+      "반드시 return 값이 있어야 하는 특별한 메서드이다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "02 · __init__ 와 self — 객체가 태어날 때",
+    "explanation": "`__init__`은 인스턴스가 생성(태어나는) 순간 자동 실행되는 생성자입니다. 여기서 초기 속성을 설정합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    def __init__(self, name, role, salary):\n        self.name = name\n        self.role = role\n        self.salary = salary\n\nalice = TeamMember(\"Alice\", \"시니어 개발자\", 6000)\nprint(f\"{alice.name} / {alice.role} / {alice.salary}만원\")\n```",
+    "answer": "Alice / 시니어 개발자 / 6000만원",
+    "options": [
+      "Alice / 시니어 개발자 / 6000만원",
+      "alice.name / alice.role / alice.salary만원",
+      "TeamMember / 시니어 개발자 / 6000",
+      "Error: self가 정의되지 않았습니다."
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "02 · __init__ 와 self — 객체가 태어날 때",
+    "explanation": "f-string에서 `alice.name`은 \"Alice\", `alice.role`은 \"시니어 개발자\", `alice.salary`는 6000을 출력합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬 클래스에서 `self`의 역할로 올바른 것은?",
+    "answer": "메서드 내에서 해당 인스턴스 자신을 가리키는 참조이다.",
+    "options": [
+      "메서드 내에서 해당 인스턴스 자신을 가리키는 참조이다.",
+      "클래스 자체를 가리키는 참조이다.",
+      "부모 클래스를 가리키는 참조이다.",
+      "메서드를 호출한 모듈을 가리키는 참조이다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "02 · __init__ 와 self — 객체가 태어날 때",
+    "explanation": "`self`는 '나 자신(이 객체)'을 가리킵니다. `alice.introduce()`를 호출하면 `self`에 자동으로 `alice`가 전달됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    def __init__(self, name, role, salary):\n        self.name, self.role, self.salary = name, role, salary\n\n    def negotiate_salary(self, amount):\n        self.salary += amount\n        print(f\"{self.name}님 연봉이 {self.salary}만원이 됐습니다.\")\n\nalice = TeamMember(\"Alice\", \"주니어 기획자\", 3000)\nalice.negotiate_salary(2000)\n```",
+    "answer": "Alice님 연봉이 5000만원이 됐습니다.",
+    "options": [
+      "Alice님 연봉이 5000만원이 됐습니다.",
+      "Alice님 연봉이 3000만원이 됐습니다.",
+      "Alice님 연봉이 2000만원이 됐습니다.",
+      "Alice님 연봉이 6000만원이 됐습니다."
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "03 · 메서드 — 객체가 하는 '행동'",
+    "explanation": "초기 salary=3000에서 amount=2000을 더하면 3000+2000=5000이 됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "클래스 변수와 인스턴스 변수의 차이로 올바른 것은?",
+    "answer": "클래스 변수는 모든 인스턴스가 공유하고, 인스턴스 변수는 각 객체마다 다른 값을 가진다.",
+    "options": [
+      "클래스 변수는 모든 인스턴스가 공유하고, 인스턴스 변수는 각 객체마다 다른 값을 가진다.",
+      "인스턴스 변수는 모든 인스턴스가 공유하고, 클래스 변수는 각 객체마다 다른 값을 가진다.",
+      "클래스 변수는 `__init__` 안에, 인스턴스 변수는 `__init__` 밖에 정의한다.",
+      "클래스 변수와 인스턴스 변수는 둘 다 `self.변수명` 형태로 정의한다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "04 · 클래스 변수 vs 인스턴스 변수",
+    "explanation": "클래스 변수는 `__init__` 밖에 정의하며 모든 객체가 공유(예: company_name). 인스턴스 변수는 `__init__` 안 `self.x`로 정의하며 각 객체가 다른 값을 가집니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    company_name = \"이어드림\"\n    total_members = 0\n\n    def __init__(self, name):\n        self.name = name\n        TeamMember.total_members += 1\n\na = TeamMember(\"Alice\")\nb = TeamMember(\"Bob\")\nprint(TeamMember.total_members)\n```",
+    "answer": "2",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "Error"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "04 · 클래스 변수 vs 인스턴스 변수",
+    "explanation": "객체 a, b가 생성될 때마다 `__init__`에서 `total_members`가 1씩 증가하므로, 2개 생성 후 값은 2입니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "객체를 `print()` 할 때 사람이 읽기 좋은 문자열을 반환하도록 정의하는 매직 메서드는?\n```python\nclass TeamMember:\n    def __init__(self, name, role):\n        self.name, self.role = name, role\n    def ______(self):\n        return f\"{self.role} {self.name}\"\n\nalice = TeamMember(\"Alice\", \"개발자\")\nprint(alice)  # 개발자 Alice\n```",
+    "answer": "__str__",
+    "options": [
+      "__str__",
+      "__repr__",
+      "__print__",
+      "__init__"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "05 · __str__ / __repr__ — 객체를 글자로",
+    "explanation": "`__str__`은 `print()` 호출 시 사람이 읽기 좋은 문자열을 반환합니다. `__repr__`은 디버깅용 정확한 표현을 반환합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "다음 중 `@classmethod`에 대한 설명으로 옳은 것은?",
+    "answer": "첫 번째 인자로 cls(클래스 자신)를 받으며, 클래스 변수에 접근할 때 사용한다.",
+    "options": [
+      "첫 번째 인자로 cls(클래스 자신)를 받으며, 클래스 변수에 접근할 때 사용한다.",
+      "첫 번째 인자로 self(인스턴스 자신)를 받으며, 인스턴스 변수에 접근할 때 사용한다.",
+      "self나 cls 인자 없이 독립적으로 동작하는 메서드이다.",
+      "`@classmethod`는 인스턴스를 통해서만 호출할 수 있다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "06 · 클래스 메서드 · 정적 메서드",
+    "explanation": "`@classmethod`는 첫 인자로 `cls`(클래스 자신)를 받습니다. 클래스 변수 접근이나 대체 생성자를 만들 때 씁니다. `@staticmethod`는 self·cls 없이 독립 기능을 구현합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    total = 0\n    def __init__(self, name):\n        self.name = name\n        TeamMember.total += 1\n\n    @staticmethod\n    def is_valid_salary(salary):\n        return 1000 <= salary <= 10000\n\nprint(TeamMember.is_valid_salary(6000))\n```",
+    "answer": "True",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "06 · 클래스 메서드 · 정적 메서드",
+    "explanation": "6000은 1000 이상 10000 이하이므로 조건 `1000 <= 6000 <= 10000`은 True입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬 상속에서 `super().__init__(...)`을 호출하는 이유는?",
+    "answer": "자식 클래스에서 부모 클래스의 초기화 코드를 그대로 실행하기 위해서이다.",
+    "options": [
+      "자식 클래스에서 부모 클래스의 초기화 코드를 그대로 실행하기 위해서이다.",
+      "자식 클래스의 인스턴스를 삭제하기 위해서이다.",
+      "부모 클래스의 모든 메서드를 비활성화하기 위해서이다.",
+      "클래스 변수를 초기화하기 위해서이다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "07 · 상속 (Inheritance) — 물려받기",
+    "explanation": "`super()`는 부모 클래스를 가리킵니다. `super().__init__(...)`으로 부모의 초기화를 실행해 공통 속성(team_name, members 등)을 설정합니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "아래 코드에서 `DevTeam`이 `Department`를 상속받아 부모의 `__init__`을 실행하려면 빈칸에 무엇이 들어가야 하나?\n```python\nclass Department:\n    def __init__(self, team_name):\n        self.team_name = team_name\n        self.members = []\n\nclass DevTeam(Department):\n    def __init__(self, tech_stack):\n        ______.__init__(\"개발팀\")\n        self.tech_stack = tech_stack\n```",
+    "answer": "super()",
+    "options": [
+      "super()",
+      "parent()",
+      "Department()",
+      "self.parent"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "07 · 상속 (Inheritance) — 물려받기",
+    "explanation": "`super()`는 부모 클래스를 가리키는 파이썬 내장 함수입니다. `super().__init__(\"개발팀\")`으로 부모의 초기화 코드를 실행합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "오버라이딩(Overriding)에 대한 설명으로 옳은 것은?",
+    "answer": "자식 클래스에서 부모 클래스의 메서드를 같은 이름으로 다시 정의하는 것이다.",
+    "options": [
+      "자식 클래스에서 부모 클래스의 메서드를 같은 이름으로 다시 정의하는 것이다.",
+      "부모 클래스에서 자식 클래스의 메서드를 호출하는 것이다.",
+      "하나의 메서드에 여러 개의 인자를 받을 수 있도록 하는 것이다.",
+      "클래스 외부에서 메서드를 추가하는 것이다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "08 · 오버라이딩 · 다형성",
+    "explanation": "오버라이딩은 부모 메서드를 자식이 자기 방식대로 다시 정의하는 것입니다. 다형성은 같은 메서드 이름을 호출해도 객체마다 다르게 동작하는 것입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드를 실행했을 때 출력 결과 2줄은?\n```python\nclass Department:\n    def team_meeting(self):\n        print(f\"{self.team_name} 회의 시작\")\n\nclass DevTeam(Department):\n    team_name = \"개발팀\"\n    def team_meeting(self):\n        print(\"개발팀: 스프린트 계획 회의\")\n\nclass SalesTeam(Department):\n    team_name = \"영업팀\"\n    def team_meeting(self):\n        print(\"영업팀: 매출 현황 회의\")\n\nfor team in [DevTeam(), SalesTeam()]:\n    team.team_meeting()\n```",
+    "answer": "개발팀: 스프린트 계획 회의\n영업팀: 매출 현황 회의",
+    "options": [
+      "개발팀: 스프린트 계획 회의\n영업팀: 매출 현황 회의",
+      "개발팀 회의 시작\n영업팀 회의 시작",
+      "개발팀: 스프린트 계획 회의\n개발팀: 스프린트 계획 회의",
+      "영업팀: 매출 현황 회의\n영업팀: 매출 현황 회의"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "08 · 오버라이딩 · 다형성",
+    "explanation": "각 팀이 `team_meeting()`을 오버라이딩했으므로, 같은 메서드 이름을 호출해도 각 팀 고유의 출력이 나옵니다. 이게 다형성입니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "파이썬에서 `__init__`, `__str__`처럼 앞뒤 밑줄 2개(`__`)로 감싸진 메서드를 부르는 이름은? (힌트: 특정 상황에 파이썬이 자동 호출합니다)",
+    "answer": "매직 메서드",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "참고자료 — 매직 메서드(던더 메서드)",
+    "explanation": "앞뒤 밑줄 2개(`__`)로 감싸진 메서드를 매직 메서드(또는 던더 메서드)라고 합니다. 파이썬이 특정 순간에 자동으로 호출합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬의 캡슐화에서 `_name`(밑줄 하나)의 의미로 옳은 것은?",
+    "answer": "외부에서 직접 사용하지 말라는 관례(약속)를 표현한다.",
+    "options": [
+      "외부에서 직접 사용하지 말라는 관례(약속)를 표현한다.",
+      "파이썬이 강제로 외부 접근을 막는 private 속성이다.",
+      "클래스 변수임을 나타내는 표시이다.",
+      "정적 메서드임을 나타내는 표시이다."
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 파이썬 클래스.md",
+    "section": "참고자료 — 캡슐화 관례",
+    "explanation": "파이썬은 강제 private이 없고 관례로 표현합니다. `_name`은 '외부에서 직접 쓰지 마세요'라는 약속(관례)이고, `__name`은 name mangling으로 외부 접근을 더 어렵게 합니다."
+  }
+]

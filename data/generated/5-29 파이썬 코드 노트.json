@@ -1,0 +1,302 @@
+[
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nprint(3, \"Hello!\")\n```",
+    "answer": "3 Hello!",
+    "options": [
+      "3 Hello!",
+      "3Hello!",
+      "\"3\" \"Hello!\"",
+      "3, Hello!"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 출력 — print()",
+    "explanation": "print()에서 콤마(,)로 여러 값을 넘기면 자동으로 한 칸 띄어서 이어 출력합니다. 따라서 `3 Hello!`가 출력됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nprint(100, \"+\", 200, \"=\", 100 + 200)\n```",
+    "answer": "100 + 200 = 300",
+    "options": [
+      "100 + 200 = 300",
+      "100 + 200 = 100 + 200",
+      "300",
+      "100+200=300"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 출력 — print()",
+    "explanation": "\"+\"는 따옴표 안의 글자 +이고, `100 + 200`은 실제 계산이라 300이 됩니다. print의 각 인자는 공백으로 구분되어 출력됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nprint(type(3.14))\n```",
+    "answer": "<class 'float'>",
+    "options": [
+      "<class 'float'>",
+      "<class 'int'>",
+      "<class 'str'>",
+      "<class 'number'>"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "2. 기본 자료형 — 데이터의 종류",
+    "explanation": "3.14는 소수점이 있는 실수이므로 자료형은 float입니다. `type(3.14)`는 `<class 'float'>`를 반환합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬에서 변수 이름으로 사용할 수 없는 것은?",
+    "answer": "1num",
+    "options": [
+      "1num",
+      "num1",
+      "my_name",
+      "prodDate"
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "3. 변수 (Variable) — 값에 이름표 붙이기",
+    "explanation": "자료에서 '숫자로 시작 불가 (1num ❌)'라고 명시되어 있습니다. 변수명은 숫자로 시작할 수 없습니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nprint(13 // 5)\nprint(13 % 5)\n```",
+    "answer": "2\n3",
+    "options": [
+      "2\n3",
+      "2.6\n3",
+      "2\n2.6",
+      "3\n2"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "4. 자료형의 연산",
+    "explanation": "`13 // 5`는 몫이므로 2, `13 % 5`는 나머지이므로 3입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nprint(\"안녕\" * 3)\n```",
+    "answer": "안녕안녕안녕",
+    "options": [
+      "안녕안녕안녕",
+      "안녕 안녕 안녕",
+      "안녕3",
+      "TypeError"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "4. 자료형의 연산",
+    "explanation": "문자열에 `*` 연산자를 쓰면 해당 횟수만큼 반복됩니다. `\"안녕\" * 3`은 `\"안녕안녕안녕\"`이 됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "다음 코드를 실행하면 어떻게 되는가?\n\n```python\nage_num = 20\nprint(\"나이: \" + age_num)\n```",
+    "answer": "TypeError가 발생한다.",
+    "options": [
+      "TypeError가 발생한다.",
+      "나이: 20이 출력된다.",
+      "나이: 가 출력된다.",
+      "20이 출력된다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "4. 자료형의 연산",
+    "explanation": "자료에 '문자열 + 숫자는 에러(TypeError)'라고 명시되어 있습니다. 숫자를 str()로 변환해야 이어붙일 수 있습니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nword = \"Ready\"\nprint(word[-1])\n```",
+    "answer": "y",
+    "options": [
+      "y",
+      "R",
+      "d",
+      "y\n"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "5. 인덱싱 & 슬라이싱 — 원하는 부분 꺼내기",
+    "explanation": "음수 인덱스 -1은 뒤에서 첫 번째 문자를 가리킵니다. \"Ready\"에서 word[-1]은 마지막 글자 'y'입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nbeta = [2, 4, 6, 8, 10, 12, 14]\nprint(beta[2:5])\n```",
+    "answer": "[6, 8, 10]",
+    "options": [
+      "[6, 8, 10]",
+      "[4, 6, 8]",
+      "[6, 8, 10, 12]",
+      "[2, 4, 6]"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "5. 인덱싱 & 슬라이싱 — 원하는 부분 꺼내기",
+    "explanation": "슬라이싱 [2:5]는 인덱스 2, 3, 4의 원소를 꺼냅니다(끝 5는 미포함). beta[2]=6, beta[3]=8, beta[4]=10이므로 결과는 [6, 8, 10]입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nstudent_info = [\"홍길동\", 20, \"컴퓨터공학과\", [90, 85, 100, 78, 92]]\nprint(student_info[3][0])\n```",
+    "answer": "90",
+    "options": [
+      "90",
+      "[90, 85, 100, 78, 92]",
+      "홍길동",
+      "85"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "5. 인덱싱 & 슬라이싱 — 원하는 부분 꺼내기",
+    "explanation": "`student_info[3]`으로 [90, 85, 100, 78, 92] 리스트를 꺼내고, 다시 `[0]`으로 첫 번째 원소 90을 꺼냅니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nvar1 = \"100\"\nvar2 = \"300\"\nprint(var1 + var2)\n```",
+    "answer": "100300",
+    "options": [
+      "100300",
+      "400",
+      "100 300",
+      "TypeError"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "2. 비교·논리 연산자 (Part 2 조건문)",
+    "explanation": "var1, var2는 숫자가 아니라 문자열(str)입니다. 문자열 + 문자열은 이어붙이기이므로 \"100\" + \"300\" = \"100300\"이 됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nprint(list(\"1008\"))\n```",
+    "answer": "['1', '0', '0', '8']",
+    "options": [
+      "['1', '0', '0', '8']",
+      "[1, 0, 0, 8]",
+      "[1008]",
+      "['1008']"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 입력 — input() (Part 2 조건문)",
+    "explanation": "`list('1008')`은 문자열의 각 문자를 원소로 하는 리스트를 만듭니다. 각 문자는 문자열 타입이므로 `['1', '0', '0', '8']`이 됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nscore = 78\nif score >= 90:\n    print(\"학점: A\")\nelif score >= 75:\n    print(\"학점: B\")\nelif score >= 60:\n    print(\"학점: C\")\nelse:\n    print(\"학점: F\")\n```",
+    "answer": "학점: B",
+    "options": [
+      "학점: B",
+      "학점: A",
+      "학점: C",
+      "학점: F"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "3. if / if-else / if-elif-else",
+    "explanation": "78은 90 미만이므로 첫 조건 통과, 78 >= 75는 True이므로 '학점: B'를 출력하고 나머지 elif/else는 실행되지 않습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`elif`와 여러 독립적인 `if` 문의 차이로 옳은 것은?",
+    "answer": "elif는 처음 True인 조건 하나만 실행하고 멈추지만, 독립 if는 각각 따로 검사한다.",
+    "options": [
+      "elif는 처음 True인 조건 하나만 실행하고 멈추지만, 독립 if는 각각 따로 검사한다.",
+      "elif와 독립 if는 동작이 완전히 동일하다.",
+      "elif는 조건이 False일 때만 실행된다.",
+      "독립 if는 앞의 조건이 True면 뒤 if는 건너뛴다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "3. if / if-else / if-elif-else",
+    "explanation": "자료에 '`elif`는 하나만 골라 실행, 따로 쓴 `if`는 각각 독립적으로 검사합니다'라고 명시되어 있습니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nmonth = 8\nif month in [3, 4, 5]:\n    print(\"봄입니다.\")\nelif month in [6, 7, 8]:\n    print(\"여름입니다.\")\nelif month in [9, 10, 11]:\n    print(\"가을입니다.\")\nelse:\n    print(\"겨울입니다.\")\n```",
+    "answer": "여름입니다.",
+    "options": [
+      "여름입니다.",
+      "봄입니다.",
+      "가을입니다.",
+      "겨울입니다."
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "3. if / if-else / if-elif-else",
+    "explanation": "month=8은 [6, 7, 8] 안에 포함되므로 '여름입니다.'가 출력됩니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "다음은 리스트에서 첫 번째 일치하는 값을 삭제하는 코드입니다. 빈칸에 알맞은 메서드는?\n\n```python\nmy_list = [3, 1, 2, 3]\nmy_list.______(3)\nprint(my_list)   # [1, 2, 3]\n```",
+    "answer": "remove",
+    "options": [
+      "remove",
+      "delete",
+      "pop",
+      "discard"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 핵심 메서드 (Part 3 리스트)",
+    "explanation": "`remove(d)`는 리스트에서 값 d와 일치하는 첫 번째 원소를 삭제합니다. 앞의 3만 삭제되어 [1, 2, 3]이 됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n\n```python\nc = [1, 2, 4, 5]\nc.insert(2, 3)\nprint(c)\n```",
+    "answer": "[1, 2, 3, 4, 5]",
+    "options": [
+      "[1, 2, 3, 4, 5]",
+      "[1, 2, 4, 3, 5]",
+      "[3, 1, 2, 4, 5]",
+      "[1, 3, 2, 4, 5]"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 핵심 메서드 (Part 3 리스트)",
+    "explanation": "`insert(2, 3)`은 인덱스 2 자리에 값 3을 삽입합니다. 기존 인덱스 2 이후 원소들은 뒤로 밀리므로 [1, 2, 3, 4, 5]가 됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`sort()`에 대한 설명으로 옳은 것은?",
+    "answer": "원본 리스트를 직접 바꾸며, 반환값은 None이다.",
+    "options": [
+      "원본 리스트를 직접 바꾸며, 반환값은 None이다.",
+      "원본 리스트를 변경하지 않고 정렬된 새 리스트를 반환한다.",
+      "원본 리스트를 직접 바꾸며, 정렬된 리스트를 반환한다.",
+      "문자열에만 사용 가능하다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 핵심 메서드 (Part 3 리스트)",
+    "explanation": "자료에 '`sort()`는 원본 리스트를 직접 바꾸고 아무것도 반환하지 않습니다(None)'라고 명시되어 있습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "문자열(str)과 리스트(list)의 차이로 옳은 것은?",
+    "answer": "문자열은 값 변경이 불가(불변)하고, 리스트는 값 변경이 가능(가변)하다.",
+    "options": [
+      "문자열은 값 변경이 불가(불변)하고, 리스트는 값 변경이 가능(가변)하다.",
+      "문자열은 append()를 쓸 수 있지만, 리스트는 쓸 수 없다.",
+      "리스트는 인덱싱이 불가하지만, 문자열은 가능하다.",
+      "두 자료형 모두 값 변경이 불가하다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "2. 시퀀스 자료형 공통 특징",
+    "explanation": "자료의 표에 문자열은 '값 변경 불가(불변)', 리스트는 '값 변경 가능(가변)'으로 명시되어 있습니다. 문자열은 append()를 사용할 수 없습니다."
+  },
+  {
+    "type": "result_to_code",
+    "question": "다음 출력을 만들기 위한 코드로 옳은 것은?\n\n출력:\n```\n['사과', '바나나', '우유']\n```",
+    "answer": "shopping = []\nshopping.append('사과')\nshopping.append('바나나')\nshopping.append('우유')\nprint(shopping)",
+    "options": [
+      "shopping = []\nshopping.append('사과')\nshopping.append('바나나')\nshopping.append('우유')\nprint(shopping)",
+      "shopping = []\nshopping.insert(0, '사과')\nshopping.insert(0, '바나나')\nshopping.insert(0, '우유')\nprint(shopping)",
+      "shopping = ['사과', '바나나']\nshopping.append(['우유'])\nprint(shopping)",
+      "shopping = []\nshopping.extend('사과', '바나나', '우유')\nprint(shopping)"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 코드 노트.md",
+    "section": "1. 핵심 메서드 (Part 3 리스트)",
+    "explanation": "빈 리스트에 append로 하나씩 순서대로 추가하면 ['사과', '바나나', '우유']가 됩니다. insert(0, ...)를 반복하면 역순이 됩니다."
+  }
+]

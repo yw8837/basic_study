@@ -1,0 +1,302 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "`pop()` 메서드에 대한 설명으로 올바른 것은?",
+    "answer": "삭제한 요소의 값을 반환한다",
+    "options": [
+      "삭제한 요소의 값을 반환한다",
+      "값을 삭제하기만 하고 반환하지 않는다",
+      "리스트의 첫 번째 요소만 삭제할 수 있다",
+      "삭제 후 리스트를 정렬한다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "01 · 문자열·리스트 메서드",
+    "explanation": "`pop()`은 지우면서 그 값을 돌려줍니다. `remove()`는 지우기만 합니다. 인덱스를 지정하거나 비워두면 마지막 요소를 꺼냅니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nmy_list = [2, 3, 5, 7, 11]\nprint(my_list.pop(0))\nprint(my_list.pop())\nprint(my_list)\n```",
+    "answer": "2\n11\n[3, 5, 7]",
+    "options": [
+      "2\n11\n[3, 5, 7]",
+      "2\n7\n[3, 5, 11]",
+      "11\n2\n[3, 5, 7]",
+      "2\n11\n[2, 3, 5, 7]"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "01 · 문자열·리스트 메서드",
+    "explanation": "`pop(0)`은 인덱스 0(값 2)을 꺼내 반환하고 삭제합니다. 그다음 `pop()`은 괄호가 비었으므로 마지막 요소(11)를 꺼냅니다. 남은 리스트는 [3, 5, 7]."
+  },
+  {
+    "type": "fill_blank",
+    "question": "문자열을 쪼개 리스트로 만들 때는 `split`, 리스트를 합쳐 문자열로 만들 때는 `join`을 씁니다. 다음 빈칸에 들어갈 코드는?\n```python\nresult = _____.join([\"서울\", \"대전\", \"대구\"])\nprint(result)   # 서울→대전→대구\n```",
+    "answer": "\"→\"",
+    "options": [
+      "\"→\"",
+      "[\"→\"]",
+      "join(\"→\")",
+      "\",\""
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "01 · 문자열·리스트 메서드",
+    "explanation": "`join`은 `\"구분자\".join(리스트)` 형태입니다. 구분자 문자열에 `.join()`을 붙여 사용해야 합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nprint(\"elice and alice\".count(\"e\"))\n```",
+    "answer": "3",
+    "options": [
+      "3",
+      "2",
+      "4",
+      "1"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "01 · 문자열·리스트 메서드",
+    "explanation": "\"elice and alice\"에서 e의 위치: 'e'(0), 'e'(4), 'e'(12) — 총 3개입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "튜플에 대한 설명으로 **틀린** 것은?",
+    "answer": "원소가 1개인 튜플은 `(1)`로 만든다",
+    "options": [
+      "원소가 1개인 튜플은 `(1)`로 만든다",
+      "소괄호 `()`로 만든다",
+      "인덱싱·슬라이싱이 가능하다",
+      "한 번 만들면 값을 바꿀 수 없다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "02 · 튜플 (Tuple) — 바뀌지 않는 묶음",
+    "explanation": "원소 1개 튜플은 쉼표가 필수입니다. `(1,)`은 튜플이지만 `(1)`은 그냥 정수입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드를 실행하면 어떤 일이 일어나는가?\n```python\nt = (1, 2, 3)\nt[0] = 99\n```",
+    "answer": "TypeError가 발생한다",
+    "options": [
+      "TypeError가 발생한다",
+      "t가 (99, 2, 3)이 된다",
+      "t가 변경 없이 (1, 2, 3) 그대로다",
+      "IndexError가 발생한다"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "02 · 튜플 (Tuple) — 바뀌지 않는 묶음",
+    "explanation": "튜플은 불변(immutable) 자료형입니다. 값을 바꾸려 하면 `TypeError`가 발생합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "딕셔너리의 키(key)로 사용할 수 **없는** 자료형은?",
+    "answer": "리스트",
+    "options": [
+      "리스트",
+      "문자열",
+      "숫자",
+      "튜플"
+    ],
+    "grading": "lenient",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "03 · 딕셔너리 (Dictionary) — 이름표가 붙은 데이터",
+    "explanation": "딕셔너리 키는 바뀌지 않는(불변) 자료형만 가능합니다. 문자열·숫자·튜플은 OK, 리스트는 변경 가능하므로 키로 쓸 수 없습니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "딕셔너리에서 (키, 값) 쌍 전체를 얻는 메서드로 빈칸에 알맞은 것은?\n```python\nperson = {\"name\": \"Rabbit\", \"age\": 22}\nfor key, val in person.___():\n    print(key, val)\n```",
+    "answer": "items",
+    "options": [
+      "items",
+      "keys",
+      "values",
+      "pairs"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "03 · 딕셔너리 (Dictionary) — 이름표가 붙은 데이터",
+    "explanation": "`keys()`는 키만, `values()`는 값만, `items()`는 (키, 값) 쌍을 반환합니다. for문에서 두 변수로 동시에 받으려면 `items()`를 씁니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nscores = {\"수학\": 95, \"영어\": 88}\nfor 과목, 점수 in scores.items():\n    print(f\"{과목}: {점수}점\")\n```",
+    "answer": "수학: 95점\n영어: 88점",
+    "options": [
+      "수학: 95점\n영어: 88점",
+      "수학 영어\n95 88",
+      "{\"수학\": 95, \"영어\": 88}",
+      "('수학', 95)\n('영어', 88)"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "03 · 딕셔너리 (Dictionary) — 이름표가 붙은 데이터",
+    "explanation": "`items()`로 (키, 값) 쌍을 꺼내 f-string으로 출력합니다. 각 쌍이 한 줄씩 출력됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`range(1, 10)`이 생성하는 숫자 범위는?",
+    "answer": "1부터 9까지",
+    "options": [
+      "1부터 9까지",
+      "1부터 10까지",
+      "0부터 9까지",
+      "0부터 10까지"
+    ],
+    "grading": "lenient",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "04 · 반복문 (Loop)",
+    "explanation": "`range(시작, 끝)`은 끝 숫자를 포함하지 않습니다. `range(1, 10)`은 1, 2, …, 9입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\ni = 5\nwhile i > 0:\n    print(i)\n    i -= 1\nprint(\"발사!\")\n```",
+    "answer": "5\n4\n3\n2\n1\n발사!",
+    "options": [
+      "5\n4\n3\n2\n1\n발사!",
+      "5\n4\n3\n2\n1",
+      "5\n4\n3\n2\n1\n0\n발사!",
+      "발사!\n5\n4\n3\n2\n1"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "04 · 반복문 (Loop)",
+    "explanation": "`i`가 5에서 시작해 매 반복마다 1씩 줄어 0이 되면 조건(i > 0)이 거짓이 되어 종료됩니다. while 루프가 끝난 뒤 \"발사!\"가 출력됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nfor fruit in [\"사과\", \"망고\", \"딸기\"]:\n    if fruit == \"망고\":\n        break\n    print(fruit)\n```",
+    "answer": "사과",
+    "options": [
+      "사과",
+      "사과\n망고\n딸기",
+      "사과\n딸기",
+      "망고"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "04 · 반복문 (Loop)",
+    "explanation": "\"사과\"는 print 후 다음 반복, \"망고\"를 만나면 break로 반복이 종료됩니다. \"딸기\"는 실행되지 않습니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "다음 함수를 완성하려 합니다. `a + b`의 두 배를 반환하도록 빈칸을 채우세요.\n```python\ndef plus_double(a, b):\n    c = a + b\n    _____ 2 * c\n```",
+    "answer": "return",
+    "options": [
+      "return",
+      "print",
+      "yield",
+      "output"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "05 · 함수와 메서드",
+    "explanation": "함수에서 결과값을 돌려줄 때는 `return`을 씁니다. `print`는 화면에 출력만 하고 값을 돌려주지 않습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "함수에 `return`이 없으면 함수가 반환하는 값은?",
+    "answer": "None",
+    "options": [
+      "None",
+      "0",
+      "False",
+      "빈 문자열 \"\""
+    ],
+    "grading": "lenient",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "05 · 함수와 메서드",
+    "explanation": "`return`이 없는 함수는 자동으로 `None`을 반환합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드를 실행하면 어떻게 되는가?\n```python\nx = \"전역\"\n\ndef my_func():\n    y = \"지역\"\n    print(x)\n\nmy_func()\nprint(y)\n```",
+    "answer": "전역 출력 후 NameError 발생",
+    "options": [
+      "전역 출력 후 NameError 발생",
+      "전역\n지역 두 줄 출력",
+      "NameError만 발생",
+      "아무것도 출력되지 않는다"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "05 · 함수와 메서드",
+    "explanation": "`my_func()` 호출 시 전역변수 `x`를 읽어 \"전역\"을 출력합니다. 이후 `print(y)`는 `y`가 함수 밖에 없으므로 `NameError`가 발생합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "함수와 메서드의 호출 방식 차이로 올바른 것은?",
+    "answer": "함수는 `함수명(자료)`, 메서드는 `자료.메서드명()`",
+    "options": [
+      "함수는 `함수명(자료)`, 메서드는 `자료.메서드명()`",
+      "함수는 `자료.함수명()`, 메서드는 `메서드명(자료)`",
+      "함수와 메서드는 호출 방식이 동일하다",
+      "메서드는 `함수명(자료)`, 함수는 `자료.메서드명()`"
+    ],
+    "grading": "lenient",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "05 · 함수와 메서드",
+    "explanation": "함수는 `len(my_list)`처럼 `함수명(자료)` 형태, 메서드는 `my_list.append(4)`처럼 `자료.메서드명()` 형태입니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "타입 힌트를 사용한 함수 선언입니다. 반환값이 없는 함수의 반환 타입으로 빈칸에 알맞은 것은?\n```python\ndef log(msg: str) -> _____:\n    print(msg)\n```",
+    "answer": "None",
+    "options": [
+      "None",
+      "void",
+      "null",
+      "str"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "참고자료 - 타입 힌트",
+    "explanation": "파이썬에서 반환값이 없는 함수는 `-> None`으로 표시합니다. `void`나 `null`은 파이썬 타입 힌트 문법이 아닙니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nfor i, fruit in enumerate([\"사과\", \"배\"]):\n    print(i, fruit)\n```",
+    "answer": "0 사과\n1 배",
+    "options": [
+      "0 사과\n1 배",
+      "1 사과\n2 배",
+      "사과 0\n배 1",
+      "0\n사과\n1\n배"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "참고자료 - enumerate · zip",
+    "explanation": "`enumerate`는 기본적으로 0부터 인덱스를 부여합니다. 각 반복에서 `(인덱스, 값)` 쌍이 나오며 공백으로 구분 출력됩니다."
+  },
+  {
+    "type": "result_to_code",
+    "question": "다음 출력을 만드는 코드로 올바른 것은?\n```\n철수 20\n영희 22\n```",
+    "answer": "for name, age in zip([\"철수\", \"영희\"], [20, 22]):\n    print(name, age)",
+    "options": [
+      "for name, age in zip([\"철수\", \"영희\"], [20, 22]):\n    print(name, age)",
+      "for name, age in enumerate([\"철수\", \"영희\"]):\n    print(name, age)",
+      "for i in range(2):\n    print([\"철수\", \"영희\"][i])",
+      "print(dict(zip([\"철수\", \"영희\"], [20, 22])))"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "참고자료 - enumerate · zip",
+    "explanation": "`zip`은 두 리스트를 나란히 묶어 `(이름, 나이)` 쌍을 만듭니다. `enumerate`는 인덱스와 값의 쌍이므로 이 출력을 만들 수 없습니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nfor i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)\n```",
+    "answer": "1\n2\n4\n5",
+    "options": [
+      "1\n2\n4\n5",
+      "1\n2\n3\n4\n5",
+      "1\n2",
+      "4\n5"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-01 파이썬 기초2.md",
+    "section": "참고자료 - continue",
+    "explanation": "`continue`는 해당 회차만 건너뛰고 다음으로 진행합니다. `i == 3`일 때 출력을 건너뛰므로 1, 2, 4, 5가 출력됩니다."
+  }
+]

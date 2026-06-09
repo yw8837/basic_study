@@ -1,0 +1,177 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "파이썬 라이브러리 중 '표준 라이브러리'에 해당하는 것은?",
+    "answer": "math, random, datetime",
+    "options": [
+      "math, random, datetime",
+      "numpy, pandas, requests",
+      "matplotlib, seaborn, scikit-learn",
+      "BeautifulSoup, Flask, Django"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "01 · 라이브러리 세계 탐험하기",
+    "explanation": "표준 라이브러리는 파이썬에 기본 내장되어 설치 없이 사용 가능합니다. math, random, datetime, os, json 등이 해당됩니다. numpy, pandas 등은 따로 설치해야 하는 외부 라이브러리입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "전 세계 파이썬 외부 라이브러리가 모여 있는 공식 저장소의 이름은?",
+    "answer": "PyPI (Python Package Index)",
+    "options": [
+      "PyPI (Python Package Index)",
+      "GitHub",
+      "pip",
+      "Anaconda"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "01 · 라이브러리 세계 탐험하기",
+    "explanation": "PyPI(Python Package Index)는 전 세계 개발자가 만든 파이썬 라이브러리들이 모여 있는 거대한 창고입니다. pip를 통해 여기서 패키지를 내려받습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "다음 pip 명령어 중 특정 버전을 지정해서 설치하는 올바른 명령은?",
+    "answer": "pip install pandas==2.2.0",
+    "options": [
+      "pip install pandas==2.2.0",
+      "pip install pandas:2.2.0",
+      "pip install pandas --version 2.2.0",
+      "pip install pandas@2.2.0"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "02 · 라이브러리 설치하기 — pip",
+    "explanation": "특정 버전 설치는 `pip install 패키지명==버전` 형식입니다. `==` 두 개를 씁니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "현재 설치된 파이썬 패키지 목록을 파일로 저장하는 올바른 명령은?",
+    "answer": "pip freeze > requirements.txt",
+    "options": [
+      "pip freeze > requirements.txt",
+      "pip list > requirements.txt",
+      "pip save requirements.txt",
+      "pip export requirements.txt"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "02 · 라이브러리 설치하기 — pip",
+    "explanation": "`pip freeze > requirements.txt`로 현재 설치 목록을 저장하고, `pip install -r requirements.txt`로 그 목록대로 한 번에 설치할 수 있습니다. 팀 협업의 기본입니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "requirements.txt에 저장된 패키지 목록을 한 번에 설치하는 명령의 빈칸을 채우시오.\n```bash\npip install ______ requirements.txt\n```",
+    "answer": "-r",
+    "options": [
+      "-r",
+      "-f",
+      "--from",
+      "--all"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "02 · 라이브러리 설치하기 — pip",
+    "explanation": "`pip install -r requirements.txt`는 requirements.txt에 적힌 패키지 목록을 한 번에 설치합니다. `-r` 옵션이 '파일을 읽어서 설치'를 의미합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "pandas를 import할 때 관례적으로 사용하는 별칭은?",
+    "answer": "pd",
+    "options": [
+      "pd",
+      "pan",
+      "pds",
+      "pandas"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "03 · 라이브러리 사용하기 — import",
+    "explanation": "pandas는 `import pandas as pd`, numpy는 `import numpy as np`, matplotlib.pyplot은 `import matplotlib.pyplot as plt`가 관례입니다. 공식 문서와 예제도 이 별칭을 씁니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nimport numpy as np\narr = np.array([1, 2, 3, 4])\nprint(arr.mean())\n```",
+    "answer": "2.5",
+    "options": [
+      "2.5",
+      "2",
+      "10",
+      "4"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "03 · 라이브러리 사용하기 — import",
+    "explanation": "[1,2,3,4]의 평균은 (1+2+3+4)/4 = 10/4 = 2.5입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "PyPI에 내 패키지를 배포할 때 빌드 파일을 생성하는 명령은?",
+    "answer": "python -m build",
+    "options": [
+      "python -m build",
+      "pip build",
+      "python setup.py build",
+      "twine build"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "04 · 내 코드를 전세계 사람과 공유하기 (PyPI 배포)",
+    "explanation": "`python -m build`로 dist/ 폴더에 .whl, .tar.gz 파일을 생성합니다. 그 다음 `twine upload dist/*`로 PyPI에 업로드합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "PyPI 배포 흐름 중 빌드된 파일을 PyPI에 업로드하는 도구는?",
+    "answer": "twine",
+    "options": [
+      "twine",
+      "pip",
+      "build",
+      "setuptools"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "04 · 내 코드를 전세계 사람과 공유하기 (PyPI 배포)",
+    "explanation": "`twine upload dist/*` 명령으로 빌드된 파일을 PyPI에 업로드합니다. 업로드 전에 PyPI 계정과 토큰이 필요합니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "패키지의 이름, 버전, 의존성을 정의하는 핵심 설정 파일명은?\n```toml\n[project]\nname = \"my-package\"\nversion = \"0.1.0\"\ndependencies = [\"requests\"]\n```\n위 파일의 이름은 무엇인가?",
+    "answer": "pyproject.toml",
+    "options": [
+      "pyproject.toml",
+      "setup.py",
+      "requirements.txt",
+      "package.json"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "04 · 내 코드를 전세계 사람과 공유하기 (PyPI 배포)",
+    "explanation": "`pyproject.toml`은 패키지 이름·버전·의존성을 정의하는 핵심 설정 파일입니다. requirements.txt는 설치 목록 저장용, setup.py는 구버전 방식입니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "파이썬 패키지를 실제 PyPI에 올리기 전에 연습용으로 먼저 사용할 수 있는 테스트 서버의 이름은?",
+    "answer": "TestPyPI",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "04 · 내 코드를 전세계 사람과 공유하기 (PyPI 배포)",
+    "explanation": "TestPyPI(test.pypi.org)는 실제 PyPI에 올리기 전에 연습할 수 있는 테스트 서버입니다. 실수해도 안전합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "시맨틱 버저닝(Semantic Versioning) `major.minor.patch`에서 'minor' 버전이 올라가는 경우는?",
+    "answer": "새로운 기능이 추가되었을 때",
+    "options": [
+      "새로운 기능이 추가되었을 때",
+      "버그를 수정했을 때",
+      "기존과 호환되지 않는 큰 변경이 있을 때",
+      "패키지 이름을 변경했을 때"
+    ],
+    "grading": "lenient",
+    "source_file": "6-04 파이썬 라이브러리 활용.md",
+    "section": "참고자료 — 버전 표기 (시맨틱 버저닝)",
+    "explanation": "시맨틱 버저닝: major=큰 변화(호환성 깨짐), minor=기능 추가, patch=버그 수정. 예: 2.2.0에서 2는 major, 두 번째 2는 minor, 0은 patch입니다."
+  }
+]

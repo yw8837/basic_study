@@ -1,0 +1,27 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "AI_6스터디 블로그에서 앞으로 다루겠다고 밝힌 주요 학습 주제가 아닌 것은?",
+    "answer": "웹 퍼블리싱 및 UI 디자인",
+    "options": [
+      "웹 퍼블리싱 및 UI 디자인",
+      "LLM의 기초부터 실제 프로젝트",
+      "이어드림스쿨 강의 내용 정리",
+      "딥러닝·머신러닝 개념 정리"
+    ],
+    "grading": "lenient",
+    "source_file": "AI_6-insight.md",
+    "section": "앞으로 다룰 내용",
+    "explanation": "블로그 목적으로 밝힌 내용은 '이어드림스쿨 강의 내용 정리', 'LLM·딥러닝·머신러닝 개념 정리', '프로젝트 기록 및 회고'입니다. 웹 퍼블리싱·UI 디자인은 언급되지 않았습니다."
+  },
+  {
+    "type": "short_answer",
+    "question": "AI_6스터디 블로그가 속한 교육 과정의 이름은?",
+    "answer": "이어드림스쿨",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "AI_6-insight.md",
+    "section": "블로그 목적",
+    "explanation": "글에서 '이어드림스쿨 AI 6기 과정을 수강하면서'라고 명시되어 있습니다."
+  }
+]

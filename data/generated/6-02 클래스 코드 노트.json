@@ -1,0 +1,257 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "파이썬에서 클래스 이름의 관례로 올바른 것은?",
+    "answer": "첫 글자를 대문자로 쓴다",
+    "options": [
+      "첫 글자를 대문자로 쓴다",
+      "전부 대문자로 쓴다",
+      "소문자로만 쓴다",
+      "언더스코어(_)로 시작한다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 1. 빈 클래스와 인스턴스",
+    "explanation": "코드 노트의 `class TeamMember:`처럼 클래스명 첫 글자는 대문자로 씁니다. 이는 파이썬 관례(PascalCase)입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    pass\n\nmember1 = TeamMember()\nmember2 = TeamMember()\nprint(member1 is member2)\n```",
+    "answer": "False",
+    "options": [
+      "False",
+      "True",
+      "None",
+      "Error"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 1. 빈 클래스와 인스턴스",
+    "explanation": "`member1`과 `member2`는 같은 설계도(클래스)로 만들었지만 서로 다른 객체입니다. `is`는 동일한 객체인지 확인하므로 `False`입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`__init__` 메서드에 대한 설명으로 올바른 것은?",
+    "answer": "인스턴스가 생성되는 순간 자동으로 실행된다",
+    "options": [
+      "인스턴스가 생성되는 순간 자동으로 실행된다",
+      "클래스를 정의할 때 한 번만 실행된다",
+      "명시적으로 호출해야 실행된다",
+      "클래스 변수를 초기화할 때만 쓴다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 2. __init__ 와 속성",
+    "explanation": "`__init__`은 `TeamMember(...)`처럼 괄호를 붙여 인스턴스를 만드는 순간 자동으로 실행됩니다. `self`는 만들어지는 그 객체입니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    def __init__(self, name, role, salary):\n        self.name = name\n        self.role = role\n        self.salary = salary\n\nalice = TeamMember(name=\"Alice\", role=\"시니어 개발자\", salary=60000)\nprint(f\"{alice.name}의 직책: {alice.role}, 연봉: {alice.salary}만원\")\n```",
+    "answer": "Alice의 직책: 시니어 개발자, 연봉: 60000만원",
+    "options": [
+      "Alice의 직책: 시니어 개발자, 연봉: 60000만원",
+      "alice의 직책: 시니어 개발자, 연봉: 60000만원",
+      "name의 직책: role, 연봉: salary만원",
+      "TeamMember의 직책: 시니어 개발자, 연봉: 60000만원"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 2. __init__ 와 속성",
+    "explanation": "`alice.name`은 \"Alice\", `alice.role`은 \"시니어 개발자\", `alice.salary`는 60000이므로 해당 f-string이 그대로 출력됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    def __init__(self, name, role, salary):\n        self.name, self.role, self.salary = name, role, salary\n        self.projects = []\n\n    def negotiate_salary(self, amount):\n        self.salary += amount\n        print(f\"축하합니다! {self.name}님 연봉이 {amount}만원 올라 총 {self.salary}만원입니다.\")\n\nalice = TeamMember(\"Alice\", \"주니어 기획자\", 3000)\nalice.negotiate_salary(2000)\n```",
+    "answer": "축하합니다! Alice님 연봉이 2000만원 올라 총 5000만원입니다.",
+    "options": [
+      "축하합니다! Alice님 연봉이 2000만원 올라 총 5000만원입니다.",
+      "축하합니다! Alice님 연봉이 2000만원 올라 총 3000만원입니다.",
+      "축하합니다! Alice님 연봉이 2000만원 올라 총 2000만원입니다.",
+      "축하합니다! Alice님 연봉이 2000만원 올라 총 6000만원입니다."
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 3. 메서드 — 객체의 행동",
+    "explanation": "`alice.salary`는 3000으로 시작, `negotiate_salary(2000)` 호출 후 `self.salary += 2000`으로 5000이 됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "클래스 변수와 인스턴스 변수의 차이로 올바른 것은?",
+    "answer": "클래스 변수는 모든 인스턴스가 공유하고, 인스턴스 변수는 각 객체마다 따로 갖는다",
+    "options": [
+      "클래스 변수는 모든 인스턴스가 공유하고, 인스턴스 변수는 각 객체마다 따로 갖는다",
+      "인스턴스 변수는 모든 인스턴스가 공유하고, 클래스 변수는 각 객체마다 따로 갖는다",
+      "둘 다 모든 인스턴스가 공유한다",
+      "클래스 변수는 `__init__` 안에서만 선언할 수 있다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 4. 클래스 변수 vs 인스턴스 변수",
+    "explanation": "클래스 변수(`company_name`, `total_member` 등)는 모든 인스턴스가 공유합니다. 인스턴스 변수(`self.name` 등)는 각 객체마다 따로 저장됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드에서 `print(TeamMember.total_member)`의 출력은?\n```python\nclass TeamMember:\n    total_member = 0\n    def __init__(self, name, role, salary):\n        self.name = name\n        self.role = role\n        self.salary = salary\n        TeamMember.total_member += 1\n\nalice = TeamMember(\"Alice\", \"시니어 개발자\", 60000)\nbob   = TeamMember(\"Bob\", \"주니어 기획자\", 3000)\nprint(TeamMember.total_member)\n```",
+    "answer": "2",
+    "options": [
+      "2",
+      "0",
+      "1",
+      "3"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 4. 클래스 변수 vs 인스턴스 변수",
+    "explanation": "`__init__` 호출마다 `TeamMember.total_member += 1`이 실행됩니다. alice, bob 두 인스턴스가 생성됐으므로 2입니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`print(alice)` 호출 시 사용되는 매직 메서드는?",
+    "answer": "__str__",
+    "options": [
+      "__str__",
+      "__repr__",
+      "__init__",
+      "__print__"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 5. __str__ / __repr__",
+    "explanation": "`print()`를 호출하면 `__str__`이 사용됩니다. `__repr__`은 디버깅용 정확한 표현으로, `repr(alice)` 또는 개발자 도구에서 사용됩니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass TeamMember:\n    def __init__(self, name, role, salary):\n        self.name, self.role, self.salary = name, role, salary\n    def __str__(self):\n        return f\"{self.role} {self.name}\"\n\nalice = TeamMember(\"Alice\", \"시니어 개발자\", 60000)\nprint(alice)\n```",
+    "answer": "시니어 개발자 Alice",
+    "options": [
+      "시니어 개발자 Alice",
+      "Alice 시니어 개발자",
+      "TeamMember(name='Alice', role='시니어 개발자', salary=60000)",
+      "<__main__.TeamMember object>"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 5. __str__ / __repr__",
+    "explanation": "`print()`는 `__str__`을 호출합니다. `__str__`이 `f\"{self.role} {self.name}\"`을 반환하므로 \"시니어 개발자 Alice\"가 출력됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`@classmethod`로 정의된 메서드의 첫 번째 매개변수 관례 이름은?",
+    "answer": "cls",
+    "options": [
+      "cls",
+      "self",
+      "klass",
+      "class"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 6. 클래스 메서드 · 정적 메서드",
+    "explanation": "클래스 메서드는 `cls`(클래스 자신)를 첫 번째 매개변수로 받습니다. 인스턴스 메서드는 `self`를 받는 것과 구분됩니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`@staticmethod`로 정의된 메서드의 특징으로 올바른 것은?",
+    "answer": "self나 cls를 받지 않는 독립적인 유틸 함수이다",
+    "options": [
+      "self나 cls를 받지 않는 독립적인 유틸 함수이다",
+      "클래스 변수만 접근할 수 있다",
+      "인스턴스에서만 호출 가능하다",
+      "첫 번째 매개변수로 반드시 self를 받는다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 1. 클래스 기초 - 6. 클래스 메서드 · 정적 메서드",
+    "explanation": "`@staticmethod`는 `self`나 `cls` 없이 독립적으로 동작하는 유틸 함수입니다. 예: `TeamMember.is_valid_salary(6000)`처럼 클래스로 직접 호출합니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "자식 클래스 `DevTeam`이 부모 클래스 `Department`의 `__init__`을 호출하는 코드의 빈칸을 채우세요.\n```python\nclass DevTeam(Department):\n    def __init__(self, budget, tech_stack):\n        _____.__init__(\"개발팀\", budget)\n        self.tech_stack = tech_stack\n```",
+    "answer": "super()",
+    "options": [
+      "super()",
+      "Department",
+      "parent()",
+      "self"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 2. 상속과 다형성 - 7. 부모 클래스 + 자식 클래스 (상속)",
+    "explanation": "`super()`는 부모 클래스를 가리킵니다. `super().__init__(...)`으로 부모의 `__init__`을 호출해 공통 초기화를 수행합니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "자식 클래스가 부모 클래스의 메서드를 자기 방식으로 재정의하는 것을 무엇이라 하나요?",
+    "answer": "오버라이딩(Overriding)",
+    "options": [
+      "오버라이딩(Overriding)",
+      "오버로딩(Overloading)",
+      "상속(Inheritance)",
+      "캡슐화(Encapsulation)"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 2. 상속과 다형성 - 7. 부모 클래스 + 자식 클래스 (상속)",
+    "explanation": "`DevTeam`이 부모 `Department`의 `team_meeting()`을 자기 방식으로 재정의한 것이 오버라이딩입니다. 자식 클래스에서 같은 이름의 메서드를 다시 정의합니다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nclass Department:\n    def __init__(self, team_name, budget):\n        self.team_name = team_name\n        self.budget = budget\n        self.members = []\n    def team_meeting(self):\n        print(f\"[{self.team_name}] 정기 회의를 시작합니다.\")\n\nclass PlanningTeam(Department):\n    def __init__(self, budget):\n        super().__init__(\"기획팀\", budget)\n    def team_meeting(self):\n        print(f\"[{self.team_name}] 기획 검토 회의를 시작합니다.\")\n\nteam = PlanningTeam(20000)\nteam.team_meeting()\n```",
+    "answer": "[기획팀] 기획 검토 회의를 시작합니다.",
+    "options": [
+      "[기획팀] 기획 검토 회의를 시작합니다.",
+      "[기획팀] 정기 회의를 시작합니다.",
+      "[PlanningTeam] 기획 검토 회의를 시작합니다.",
+      "[Department] 기획 검토 회의를 시작합니다."
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 2. 상속과 다형성 - 9. 다형성 (Polymorphism)",
+    "explanation": "`PlanningTeam`이 `team_meeting()`을 오버라이딩했으므로 자식 클래스의 메서드가 실행됩니다. `self.team_name`은 `super().__init__(\"기획팀\", ...)`에서 설정된 \"기획팀\"입니다."
+  },
+  {
+    "type": "result_to_code",
+    "question": "리스트에 담긴 팀들에 대해 `team.team_meeting()`을 동일하게 호출했는데 팀마다 다른 결과가 나오는 것을 무엇이라 하나요?",
+    "answer": "다형성(Polymorphism)",
+    "options": [
+      "다형성(Polymorphism)",
+      "상속(Inheritance)",
+      "오버라이딩(Overriding)",
+      "캡슐화(Encapsulation)"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "Part 2. 상속과 다형성 - 9. 다형성 (Polymorphism)",
+    "explanation": "같은 `team.team_meeting()` 호출이 팀(객체)마다 다르게 동작하는 것이 다형성입니다. 코드 노트에서 DevTeam, PlanningTeam, SalesTeam을 리스트에 담아 같은 메서드를 호출했을 때 각기 다른 출력이 나오는 예가 있습니다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`self.company_name = \"X\"`처럼 **객체로** 클래스 변수를 수정하면 어떻게 되나요?",
+    "answer": "그 객체만의 인스턴스 변수가 새로 생기고, 다른 객체에는 영향을 주지 않는다",
+    "options": [
+      "그 객체만의 인스턴스 변수가 새로 생기고, 다른 객체에는 영향을 주지 않는다",
+      "모든 인스턴스에 반영된다",
+      "TypeError가 발생한다",
+      "클래스 변수가 삭제된다"
+    ],
+    "grading": "lenient",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "보충 - 클래스 변수 수정 주의",
+    "explanation": "`self.company_name = \"X\"`처럼 객체로 바꾸면 그 객체만의 인스턴스 변수가 새로 생깁니다. 모두에게 반영하려면 `TeamMember.company_name = \"X\"`처럼 클래스로 바꿔야 합니다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "`alice.introduce()`는 내부적으로 다음과 같이 동작합니다. 빈칸을 채우세요.\n```python\n# alice.introduce()  ≡  TeamMember.introduce(_____)\n```",
+    "answer": "alice",
+    "options": [
+      "alice",
+      "self",
+      "TeamMember",
+      "None"
+    ],
+    "grading": "code_strict",
+    "source_file": "6-02 클래스 코드 노트.md",
+    "section": "보충 - self가 헷갈릴 때",
+    "explanation": "`alice.introduce()`는 사실 `TeamMember.introduce(alice)`와 같습니다. 메서드 첫 매개변수 `self`에 그 객체(alice)가 자동으로 전달됩니다."
+  }
+]

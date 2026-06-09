@@ -4,6 +4,8 @@ import hashlib
 import random
 from pathlib import Path
 
+SECTION_CAP = 1  # 섹션·유형별 문제 생성 상한
+
 LEARN_TOKENS = {
     "print", "len", "range", "type", "int", "str", "float", "list", "bool",
     "True", "False", "None", "if", "else", "elif", "for", "while", "def",
@@ -91,6 +93,72 @@ def extract_code_output_pairs(body: str) -> list[dict]:
     return pairs
 
 
+_DEICTIC_RE = re.compile(r"^(이를|이는|이게|이것|이건|그것|그게|위|아래|위의|아래의|여기|거기|해당|다음)\b")
+
+
+def _is_complete_concept(s: str) -> bool:
+    """맥락 없이 단독으로 이해되는 완결된 문장인지 검사."""
+    # 앞에 지시어로 시작 → 앞 문장 없이는 의미 불명
+    if _DEICTIC_RE.match(s):
+        return False
+    # 불완전 종결: 괄호 열림 / 콜론·쉼표·하이픈·예시 도입부로 끝남
+    if re.search(r"[(\[:,\-]\s*$", s) or s.endswith("(ex") or s.endswith("예"):
+        return False
+    # 괄호 짝 안 맞음 → 문장 잘림
+    if s.count("(") != s.count(")") or s.count("[") != s.count("]"):
+        return False
+    # 리스트 토막("- ____: ...")처럼 콜론으로 정의를 시작하다 만 형태
+    if re.match(r"^[-*]\s", s) and ":" in s and s.rstrip().endswith(("(ex", "(예", ":")):
+        return False
+    # 표 잔재 / f-string·포맷 스펙 등 코드 조각이 섞인 문장 제외
+    if "|" in s or re.search(r"[{}]|:>|:,|:\.\d|f['\"]", s):
+        return False
+    return True
+
+
+_JOSA_PREFIX = re.compile(r"^(을|를|이|가|은|는|에|의|와|과|도|로|으로)\s")
+
+
+def _extract_answer(concept: str) -> str | None:
+    m = re.search(r"`([^`]{2,30})`", concept) or re.search(r"\*\*([^*]{2,30})\*\*", concept)
+    return m.group(1) if m else None
+
+
+def _good_answer(ans: str, max_words: int, max_len: int) -> bool:
+    """정답으로 쓸 만한 용어인지 검사 (서술구·코드 조각·깨진 추출 배제)."""
+    a = ans.strip()
+    if a != ans:           # 앞뒤 공백 = 깨진 추출
+        return False
+    if not (2 <= len(a) <= max_len):
+        return False
+    if len(a.split()) > max_words:
+        return False
+    if any(ch in a for ch in "{}|→"):
+        return False
+    if _JOSA_PREFIX.match(a):  # 조사로 시작 = 문장 중간이 잘림
+        return False
+    return True
+
+
+def _normalize_table_row(s: str) -> str | None:
+    """마크다운 표 행(| 용어 | 설명 |)을 자연 문장으로 변환."""
+    if not (s.startswith("|") and s.count("|") >= 2):
+        return None
+    cells = [c.strip() for c in s.strip().strip("|").split("|")]
+    cells = [c for c in cells if c and not re.fullmatch(r"[-:\s]+", c)]  # 구분선 셀 제외
+    if len(cells) < 2:
+        return None
+    term = next((c for c in cells if "`" in c or re.search(r"\*\*.+\*\*", c)), None)
+    if not term:
+        return None
+    desc = " / ".join(c for c in cells if c != term)
+    if len(desc) < 5:
+        return None
+    if re.search(r"[{}]|:>|:,|:\.\d|f['\"]", desc + term):  # 코드 조각 든 행은 제외
+        return None
+    return f"{desc} — 이것을 가리키는 용어는 {term}"
+
+
 def extract_concepts(body: str) -> list[str]:
     cleaned = re.sub(r"```.*?```", "", body, flags=re.DOTALL)
     cleaned = clean_text(cleaned)
@@ -98,8 +166,13 @@ def extract_concepts(body: str) -> list[str]:
     concepts = []
     for s in sentences:
         s = s.strip()
+        table = _normalize_table_row(s)
+        if table:
+            concepts.append(table)
+            continue
         if 10 < len(s) < 200 and ("`" in s or re.search(r"\*\*.+\*\*", s)):
-            concepts.append(s)
+            if _is_complete_concept(s):
+                concepts.append(s)
     return concepts[:5]
 
 
@@ -118,17 +191,18 @@ def pick_blank_token(code: str) -> tuple[str, str] | None:
 
 def make_distractors(correct: str, pool: list[str], n: int = 3) -> list[str]:
     distractors = []
-    for p in pool:
-        if p != correct and p not in distractors:
-            distractors.append(p)
-        if len(distractors) >= n:
-            break
-    if len(distractors) < n and correct in TYPE_VARIANTS:
+    # 의미상 관련된 변형(같은 자료형·역할군)을 오답으로 우선 사용
+    if correct in TYPE_VARIANTS:
         for v in TYPE_VARIANTS[correct]:
             if v not in distractors and v != correct:
                 distractors.append(v)
             if len(distractors) >= n:
                 break
+    for p in pool:
+        if p != correct and p not in distractors:
+            distractors.append(p)
+        if len(distractors) >= n:
+            break
     if len(distractors) < n:
         fallbacks = [t for t in LEARN_TOKENS if t != correct and t not in distractors]
         random.shuffle(fallbacks)
@@ -188,7 +262,7 @@ def gen_fill_blank(pair: dict, section: str, source_file: str, all_tokens: list[
             "explanation": f"정답: `{token}`\n\n원본 코드:\n```python\n{code}\n```",
         })
         used_tokens.add(token)
-        if len(questions) >= 3:
+        if len(questions) >= 1:
             break
     return questions
 
@@ -223,17 +297,16 @@ def gen_result_to_code(pair: dict, section: str, source_file: str, other_codes: 
     code, output = pair["code"], pair["output"]
     if len(code) < 5:
         return []
-    short_code = code.split("\n")[0] if "\n" in code else code
-    distractors = [c.split("\n")[0] for c in other_codes if c != code][:3]
+    distractors = [c for c in other_codes if c != code][:3]
     if len(distractors) < 3:
         return []
-    options = [short_code] + distractors[:3]
+    options = [code] + distractors[:3]
     random.shuffle(options)
     return [{
         "id": make_id(source_file, section, output),
         "type": "result_to_code",
         "question": f"다음 출력을 만드는 코드는?\n\n```\n{output}\n```",
-        "answer": short_code,
+        "answer": code,
         "options": options,
         "grading": "code_strict",
         "source_file": source_file,
@@ -251,10 +324,12 @@ def gen_concept_mc(concepts: list[str], section: str, source_file: str, other_co
         if not match:
             continue
         answer = match.group(1)
-        if len(answer) < 2:
+        if not _good_answer(answer, max_words=6, max_len=40):
             continue
         desc = re.sub(r"`[^`]+`", "____", concept, count=1)
         desc = re.sub(r"\*\*[^*]+\*\*", "____", desc, count=1)
+        if clean_text(desc).lstrip("-*  ").startswith("____"):
+            continue  # 빈칸이 맨 앞 → 맥락 없음
         other_answers = []
         for oc in other_concepts:
             m2 = re.search(r"`([^`]{2,30})`", oc) or re.search(r"\*\*([^*]{2,30})\*\*", oc)
@@ -288,10 +363,12 @@ def gen_short_answer(concepts: list[str], section: str, source_file: str) -> lis
         if not match:
             continue
         answer = match.group(1)
-        if len(answer) < 2:
+        if not _good_answer(answer, max_words=2, max_len=15):
             continue
         question_text = re.sub(r"`[^`]+`", "____", concept, count=1)
         question_text = re.sub(r"\*\*[^*]+\*\*", "____", question_text, count=1)
+        if clean_text(question_text).lstrip("-*  ").startswith("____"):
+            continue  # 빈칸이 맨 앞 → 맥락 없음
         questions.append({
             "id": make_id(source_file, section, f"sa::{concept[:40]}"),
             "type": "short_answer",
@@ -347,13 +424,36 @@ def parse_file(md_path: Path) -> list[dict]:
         other_codes = [c for c in all_codes if c not in [p["code"] for p in pairs]]
         other_concepts = [c for c in all_concepts if c not in concepts]
 
+        # 섹션·유형별 상한. 같은 원본 한 조각에서 문제가 과잉 생성되는 것을 막는다.
+        fb = ct = rt = 0
         for pair in pairs:
-            questions.extend(gen_fill_blank(pair, sec["title"], source_file, all_tokens_in_file))
-            questions.extend(gen_code_to_result(pair, sec["title"], source_file, other_outputs))
-            questions.extend(gen_result_to_code(pair, sec["title"], source_file, other_codes))
+            if fb < SECTION_CAP:
+                qs = gen_fill_blank(pair, sec["title"], source_file, all_tokens_in_file)
+                questions.extend(qs); fb += len(qs)
+            if ct < SECTION_CAP:
+                qs = gen_code_to_result(pair, sec["title"], source_file, other_outputs)
+                questions.extend(qs); ct += len(qs)
+            if rt < SECTION_CAP:
+                qs = gen_result_to_code(pair, sec["title"], source_file, other_codes)
+                questions.extend(qs); rt += len(qs)
 
-        questions.extend(gen_concept_mc(concepts, sec["title"], source_file, other_concepts))
-        questions.extend(gen_short_answer(concepts, sec["title"], source_file))
+        # 답이 짧고 명확하면 단답(입력형), 길거나 서술형이면 객관식(보기 선택)으로 배분.
+        sa_concepts, mc_concepts = [], []
+        for c in concepts:
+            a = _extract_answer(c)
+            if not a:
+                continue
+            if _good_answer(a, max_words=2, max_len=15):
+                sa_concepts.append(c)   # 짧은 답 → 단답
+            else:
+                mc_concepts.append(c)   # 긴 답 → 객관식
+        sa_use = sa_concepts[:SECTION_CAP]
+        mc_use = mc_concepts[:SECTION_CAP]
+        # 객관식 정원이 남으면 단답에 안 쓴 짧은-답 개념도 객관식으로 활용
+        if len(mc_use) < SECTION_CAP:
+            mc_use += [c for c in sa_concepts if c not in sa_use][: SECTION_CAP - len(mc_use)]
+        questions.extend(gen_concept_mc(mc_use, sec["title"], source_file, other_concepts))
+        questions.extend(gen_short_answer(sa_use, sec["title"], source_file))
 
     deduped = []
     for q in questions:

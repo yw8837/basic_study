@@ -1,0 +1,382 @@
+[
+  {
+    "type": "concept_mc",
+    "question": "파이썬의 기본 자료형에 대한 설명으로 올바른 것은?",
+    "answer": "phone = \"010-1234-5678\" 에서 phone의 자료형은 str이다.",
+    "options": [
+      "phone = \"010-1234-5678\" 에서 phone의 자료형은 str이다.",
+      "age = 25 에서 age의 자료형은 float이다.",
+      "height = 175.5 에서 height의 자료형은 int이다.",
+      "is_student = True 에서 is_student의 자료형은 str이다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "01 · 자료형 (Data Type)",
+    "explanation": "따옴표로 감싸면 숫자처럼 보여도 str이다. 25는 소수점 없으므로 int, 175.5는 소수점 있으므로 float, True는 bool이다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nprint(type(True))\n```",
+    "answer": "<class 'bool'>",
+    "options": [
+      "<class 'bool'>",
+      "<class 'int'>",
+      "<class 'str'>",
+      "True"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "01 · 자료형 (Data Type)",
+    "explanation": "True는 불리언(bool) 자료형이므로 type()은 <class 'bool'>을 반환한다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬 변수 이름 규칙으로 올바른 것은?",
+    "answer": "단어 사이를 _로 연결하는 스네이크 표기법(snake_case)이 파이썬 공식 스타일이다.",
+    "options": [
+      "단어 사이를 _로 연결하는 스네이크 표기법(snake_case)이 파이썬 공식 스타일이다.",
+      "변수 이름은 숫자로 시작해도 된다.",
+      "변수 이름에 공백을 포함할 수 있다.",
+      "if, for 같은 예약어도 변수 이름으로 사용할 수 있다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "02 · 변수 (Variable)",
+    "explanation": "파이썬 공식 스타일(PEP 8)은 snake_case다. 숫자로 시작, 공백 포함, 예약어 사용은 모두 불가하다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "변수 이름 규칙에서 잘못된 변수명을 올바르게 고친 것으로 적절한 것은? 빈칸을 채워라.\n\n`1score` → ______",
+    "answer": "score1",
+    "options": [
+      "score1",
+      "1score_",
+      "_1score",
+      "Score1"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "02 · 변수 (Variable)",
+    "explanation": "변수 이름은 숫자로 시작할 수 없으므로 1score는 오류. 자료에서 올바른 예시로 score1을 제시하고 있다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\na, b = 10, 3\nprint(a / b)\n```",
+    "answer": "3.3333333333333335",
+    "options": [
+      "3.3333333333333335",
+      "3",
+      "3.0",
+      "TypeError"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "03 · 연산자 (Operator)",
+    "explanation": "파이썬에서 /는 항상 실수를 반환한다. 10/3은 3.3333...이며 float 결과다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nprint(10 // 3)\nprint(10 % 3)\nprint(2 ** 8)\n```",
+    "answer": "3\n1\n256",
+    "options": [
+      "3\n1\n256",
+      "3\n1\n16",
+      "3.0\n1\n256",
+      "3\n0\n256"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "03 · 연산자 (Operator)",
+    "explanation": "//는 몫(정수 나눗셈)이므로 10//3=3, %는 나머지이므로 10%3=1, **는 거듭제곱이므로 2**8=256."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nprint(\"파이썬\" * 3)\n```",
+    "answer": "파이썬파이썬파이썬",
+    "options": [
+      "파이썬파이썬파이썬",
+      "파이썬 파이썬 파이썬",
+      "파이썬3",
+      "TypeError"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "03 · 연산자 (Operator)",
+    "explanation": "문자열에 * 연산자를 쓰면 그 횟수만큼 반복해서 이어 붙인 결과가 나온다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`1 + \"살\"` 코드를 실행하면 어떤 오류가 발생하는가?",
+    "answer": "TypeError",
+    "options": [
+      "TypeError",
+      "ValueError",
+      "SyntaxError",
+      "IndentationError"
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "03 · 연산자 (Operator)",
+    "explanation": "숫자와 문자열을 +로 연결하려 하면 TypeError가 발생한다. 숫자를 str()로 변환 후 이어야 한다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "`input()`으로 입력받은 값의 자료형은 무엇인가?",
+    "answer": "str",
+    "options": [
+      "str",
+      "int",
+      "float",
+      "입력한 값의 자료형을 자동으로 판단한다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "04 · 형 변환 (Type Casting)",
+    "explanation": "input()으로 받은 값은 무조건 문자열(str)이다. 계산에 쓰려면 int()나 float()으로 변환해야 한다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nprint(list(\"abc\"))\n```",
+    "answer": "['a', 'b', 'c']",
+    "options": [
+      "['a', 'b', 'c']",
+      "[\"abc\"]",
+      "('a', 'b', 'c')",
+      "['abc']"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "04 · 형 변환 (Type Casting)",
+    "explanation": "list()에 문자열을 넣으면 각 문자를 원소로 하는 리스트가 된다. list(\"abc\") → ['a','b','c']"
+  },
+  {
+    "type": "fill_blank",
+    "question": "소수점 문자열 `\"3.14\"`를 정수로 바꾸려면 어떻게 해야 하는가? 빈칸을 채워라.\n\n```python\nresult = ______(______(\"3.14\"))\n```",
+    "answer": "int(float(\"3.14\"))",
+    "options": [
+      "int(float(\"3.14\"))",
+      "int(\"3.14\")",
+      "float(int(\"3.14\"))",
+      "str(int(\"3.14\"))"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "04 · 형 변환 (Type Casting)",
+    "explanation": "int(\"3.14\")는 에러가 난다. 소수점 문자열은 먼저 float()으로 변환한 뒤 int()를 적용해야 한다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nword = \"Python\"\nprint(word[0])\nprint(word[-1])\n```",
+    "answer": "P\nn",
+    "options": [
+      "P\nn",
+      "P\no",
+      "y\nn",
+      "P\nP"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "05 · 인덱싱·슬라이싱",
+    "explanation": "인덱스 0은 첫 번째 문자 P, 음수 인덱스 -1은 마지막 문자 n이다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nbeta = \"abcdefg\"\nprint(beta[2:5])\nprint(beta[:3])\n```",
+    "answer": "cde\nabc",
+    "options": [
+      "cde\nabc",
+      "bcd\nabc",
+      "cde\nabd",
+      "cdef\nabc"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "05 · 인덱싱·슬라이싱",
+    "explanation": "beta[2:5]는 인덱스 2,3,4(5 미포함)이므로 'c','d','e' → cde. beta[:3]은 처음부터 인덱스 2까지 → abc."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nscores = [90, 85, 78, 92]\nprint(scores[1:3])\n```",
+    "answer": "[85, 78]",
+    "options": [
+      "[85, 78]",
+      "[90, 85]",
+      "[85, 78, 92]",
+      "[78, 92]"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "05 · 인덱싱·슬라이싱",
+    "explanation": "리스트 슬라이싱도 문자열과 동일하다. [1:3]은 인덱스 1,2(3 미포함) → [85, 78]."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬 조건문에서 `=`와 `==`의 차이로 올바른 것은?",
+    "answer": "`=`는 대입 연산자이고, `==`는 같은지 비교하는 연산자이다.",
+    "options": [
+      "`=`는 대입 연산자이고, `==`는 같은지 비교하는 연산자이다.",
+      "`=`와 `==`는 같은 의미로 둘 다 비교에 쓰인다.",
+      "`=`는 같은지 비교하고, `==`는 값을 대입한다.",
+      "`==`는 자료형까지 같은지 비교하고, `=`는 값만 비교한다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "06 · 조건문 (Conditional)",
+    "explanation": "=(하나)는 오른쪽 값을 왼쪽 변수에 대입하는 연산자, ==(둘)은 두 값이 같은지 비교하는 연산자다. 자료에서 '가장 헷갈리는 부분'으로 강조한 내용이다."
+  },
+  {
+    "type": "fill_blank",
+    "question": "다음 코드에서 score가 85일 때 출력되는 grade는? 빈칸에 알맞은 값을 고르시오.\n\n```python\nscore = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\nprint(f\"학점: {grade}\")\n```\n\n출력: `학점: ______`",
+    "answer": "B",
+    "options": [
+      "B",
+      "A",
+      "C",
+      "F"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "06 · 조건문 (Conditional)",
+    "explanation": "score=85이면 85>=90은 False, 85>=80은 True이므로 grade=\"B\"가 저장된다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬에서 들여쓰기를 잘못 했을 때 발생하는 오류는?",
+    "answer": "IndentationError",
+    "options": [
+      "IndentationError",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "06 · 조건문 (Conditional)",
+    "explanation": "파이썬은 들여쓰기로 코드 블록을 구분한다. 들여쓰기가 맞지 않으면 IndentationError가 발생한다."
+  },
+  {
+    "type": "short_answer",
+    "question": "f-string에서 변수를 문자열 안에 삽입하려면 어떤 기호로 변수를 감싸야 하는가? (예: `f\"학점: ___grade___\"`)",
+    "answer": "{}",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "06 · 조건문 (Conditional)",
+    "explanation": "f-string은 f\"...\" 형태이고, 문자열 안에서 변수나 표현식은 {}로 감싼다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nfruits = [\"사과\", \"바나나\", \"체리\"]\nfruits[1] = \"포도\"\nprint(len(fruits))\n```",
+    "answer": "3",
+    "options": [
+      "3",
+      "2",
+      "4",
+      "IndexError"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "07 · 리스트 (List)",
+    "explanation": "fruits[1]을 수정해도 리스트의 원소 개수는 그대로 3이다. len()은 리스트의 길이를 반환한다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드를 순서대로 실행했을 때 cart의 최종 상태는?\n```python\ncart = [\"라면\", \"계란\", \"우유\"]\ncart.append(\"빵\")\ncart.insert(0, \"쌀\")\ncart.remove(\"계란\")\nprint(cart)\n```",
+    "answer": "['쌀', '라면', '우유', '빵']",
+    "options": [
+      "['쌀', '라면', '우유', '빵']",
+      "['라면', '우유', '빵', '쌀']",
+      "['쌀', '라면', '계란', '우유', '빵']",
+      "['쌀', '우유', '빵']"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "07 · 리스트 (List)",
+    "explanation": "append(\"빵\") → ['라면','계란','우유','빵'], insert(0,\"쌀\") → ['쌀','라면','계란','우유','빵'], remove(\"계란\") → ['쌀','라면','우유','빵']."
+  },
+  {
+    "type": "fill_blank",
+    "question": "중첩 리스트에서 내부 리스트의 원소를 꺼내는 방법으로 빈칸을 채워라.\n\n```python\ninfo = [\"홍길동\", 20, [\"파이썬\", \"자바\"]]\nprint(info[______][______])   # 파이썬\n```",
+    "answer": "2][0",
+    "options": [
+      "2][0",
+      "2][1",
+      "3][0",
+      "1][0"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "07 · 리스트 (List)",
+    "explanation": "info[2]는 [\"파이썬\",\"자바\"] 리스트, info[2][0]은 그 리스트의 첫 번째 원소인 \"파이썬\"이다."
+  },
+  {
+    "type": "concept_mc",
+    "question": "str과 list의 차이점으로 올바른 것은?",
+    "answer": "str은 불변(값 변경 불가)이고, list는 가변(값 변경 가능)이다.",
+    "options": [
+      "str은 불변(값 변경 불가)이고, list는 가변(값 변경 가능)이다.",
+      "str과 list 모두 인덱싱으로 값을 변경할 수 있다.",
+      "str은 가변이고, list는 불변이다.",
+      "str과 list는 둘 다 순서가 없는 자료구조다."
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "08 · 시퀀스 자료형의 공통 특징",
+    "explanation": "str은 불변이라 text[0]=\"H\" 같이 값을 바꾸면 TypeError가 발생한다. list는 가변이라 items[0]=\"A\"처럼 변경 가능하다."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\nprint(\"파\" in \"파이썬\")\nprint(3 in [1, 2, 3])\n```",
+    "answer": "True\nTrue",
+    "options": [
+      "True\nTrue",
+      "True\nFalse",
+      "False\nTrue",
+      "False\nFalse"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "08 · 시퀀스 자료형의 공통 특징",
+    "explanation": "in 연산자는 str과 list 모두에서 포함 여부를 확인한다. \"파\"는 \"파이썬\" 안에 있고, 3은 [1,2,3] 안에 있으므로 둘 다 True."
+  },
+  {
+    "type": "code_to_result",
+    "question": "다음 코드의 출력 결과는?\n```python\npi = 3.14159\nprint(f\"{pi:.2f}\")\n```",
+    "answer": "3.14",
+    "options": [
+      "3.14",
+      "3.14159",
+      "3.1",
+      "3.142"
+    ],
+    "grading": "code_strict",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "f-string 포매팅",
+    "explanation": "f-string의 :.2f 서식은 소수점 2자리까지 반올림해서 출력한다. 3.14159를 소수점 2자리로 나타내면 3.14."
+  },
+  {
+    "type": "concept_mc",
+    "question": "파이썬 if 조건에서 False(거짓)으로 취급되는 값이 아닌 것은?",
+    "answer": "[0]",
+    "options": [
+      "[0]",
+      "[]",
+      "0",
+      "\"\""
+    ],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "Truthy / Falsy",
+    "explanation": "Falsy 값은 None, False, 0, 0.0, \"\"(빈 문자열), [](빈 리스트), {}(빈 딕셔너리)이다. [0]은 원소가 있는 리스트이므로 True(Truthy)로 취급된다."
+  },
+  {
+    "type": "short_answer",
+    "question": "`==`는 값이 같은지 비교하고, `is`는 같은 _______인지 비교한다.",
+    "answer": "객체",
+    "options": [],
+    "grading": "lenient",
+    "source_file": "5-29 파이썬 기초.md",
+    "section": "== vs is, 그리고 None",
+    "explanation": "==는 값이 같은지, is는 같은 객체인지(메모리상 동일 여부) 비교한다. None 체크는 is를 쓰는 것이 관례다."
+  }
+]
